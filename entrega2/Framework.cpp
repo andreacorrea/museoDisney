@@ -63,23 +63,22 @@ void piramide(char *prefijo,int escalones, GLfloat tamano, GLfloat posX)
 	}
 	
 }
-
-void cuboIrregular(char *nombre, GLfloat tamano, GLfloat pX, GLfloat pY, GLfloat pZ, GLfloat esY){
-		escena->agregaObjeto(nombre, (Objeto *) new Cubo(tamano,rcolor(),rcolor(),rcolor()));
+//by Alonso Rodriguez
+//cuboIrregular(nombre del objeto, tamanio en X, tamanio en Y, tamanio en Z, pos en X, pos en Y, pos en Z)
+void cuboIrregular(char *nombre, GLfloat sizeX,GLfloat sizeY,GLfloat sizeZ, GLfloat pX, GLfloat pY, GLfloat pZ){
+		escena->agregaObjeto(nombre, (Objeto *) new Cubo(1,0.0,1.0,0.0));
 		escena->objetos [nombre]->posX=pX;
 		escena->objetos [nombre]->posZ=pZ;
 		escena->objetos [nombre]->posY=pY;
-		//escena->objetos [nombre]->escalaY=esY;
-		//escena->objetos [nombre]->velRotY=1.0;
-		//escena->objetos [nombre]->escalaX=escalones-i;
-		//escena->objetos [nombre]->escalaZ=escalones-i;
+		escena->objetos [nombre]->escalaX=sizeX;
+		escena->objetos [nombre]->escalaZ=sizeZ;
+		escena->objetos [nombre]->escalaY=sizeY;
 }
 
 
 void creaEscena()
 { 
-	glutSolidCube(1.0);
-	cuboIrregular("plataforma", 20.0 , 0.0, -10.0 , 0.0 ,1.0);
+	cuboIrregular("plataforma",80.0,0.10,80.0, 0.0, -0.050, 0.0);
 
 	/*
 	piramide("uno%d",7, 0.5, -10.0);
