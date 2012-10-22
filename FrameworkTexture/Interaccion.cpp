@@ -14,8 +14,6 @@ void keyboard(unsigned char key,int x,int y)
 					  redimensiona(currWidth,currHeight);		                       
 					  break;
 
-
-
 			  case '-': activa->zview-=dtran;
 					  redimensiona(currWidth,currHeight);
 					  break;
