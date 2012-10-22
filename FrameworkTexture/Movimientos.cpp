@@ -7,17 +7,16 @@
 bool collision(){
 	map <string, Objeto *>::iterator it1;
 	map <string, Objeto *>::iterator it;
-	//buscar avatar
+	//buscar avatar y guardar la localidad donde se encuentra en el map
 	it1 = escena->objetos.find("cuboAvatar");
-	//cout<<"--------------Valor del avatar----------------"<<endl;
-	//conseguir sus atributos
-	//cout << it1->first << " pos x:" << it1->second->posX << " pos Z:" << it1->second->posZ<<endl;
+	//por cada objeto declarado en la clase
 	for ( it=escena->objetos.begin() ; it != escena->objetos.end(); it++){
-		//cout << it->first << " pos x:" << it->second->posX << " pos Z:" << it->second->posZ;
+		//buscar solo el objeto que tenga el nombre de pared
 		if(it->first == "pared"){
-			//cout<<"hay pared!!!"<<endl;
+			// imprimir pos de la pared y el avatar
 			cout << it->first << " pos Z:" << it->second->posZ << " pos Z:"<< it1->first << " pos Z:"  << it1->second->posZ;
 			cout<<endl;
+				//validar la pos
 			if((it->second->posZ + 2.5) >=  (it1->second->posZ -.25)){
 				cout<<"se esta pasando!!!"<<endl;
 				return true;
@@ -31,7 +30,7 @@ bool collision(){
 
 
 void moverAdelante(){
-	if (!collision()){
+	if (!collision()){// si no hay colisiones, entoncespuede continuar
 		//mueve la camara hacia adelante
 		activa->zview+=dtran;
 		//mueve al avatar hacia adelante

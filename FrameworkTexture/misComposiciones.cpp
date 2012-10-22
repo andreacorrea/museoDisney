@@ -78,20 +78,6 @@ void plano(char *nombre, GLfloat sizeX,GLfloat sizeY,GLfloat sizeZ, GLfloat pX, 
 		escena->objetos [nombre]->escalaY=sizeY;
 }
 
-void colocarEspacio(){
-	map <string, Objeto *>::iterator it;
-	/*
-	for ( it=escena->objetos.begin() ; it != escena->objetos.end(); it++){
-		cout << it->first << " pos x:" << it->second->posX << " pos Z:" << it->second->posZ;
-		cout<<endl;
-	}*/
-	//it = escena->objetos.find("cuboAvatar");
-//	while (1){
-		//cout << it->first << " pos x:" << it->second->posX << " pos Z:" << it->second->posZ;
-//	}
-
-}
-
 void demuestraPared()
 {
   escena->agregaObjeto("pared", (Objeto *) new Cubo(5, 0.0, 0.0, 1.0));
@@ -128,12 +114,10 @@ void creaEscena()
 {
 	//demuestraModelo();
 	//demuestraMateriales();
-	//NOMBRE, plataforma, prof en x, y y z, pos en "x", "y" y"z"
+	//nombre, profundidad en x, y y z, pos en "x", "y" y"z"
 	plano("plataforma",40.0,0.01,40.0, 0.0, -0.005, 0.0);
 	demuestraPared();
 	referencias();
 	demuestraCubo();
-	colocarEspacio();
-
 }
 
