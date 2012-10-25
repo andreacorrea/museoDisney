@@ -1,4 +1,5 @@
 #include "misComposiciones.h"
+#include <iostream>
 
 void defineLuces()
 {
@@ -66,14 +67,37 @@ void demuestraMateriales()
 	
 }
 
+//Autor: Alonso Rodriguez
+//cuboIrregular(nombre del objeto, tamanio en X, tamanio en Y, tamanio en Z, pos en X, pos en Y, pos en Z)
+void plano(char *nombre, GLfloat sizeX,GLfloat sizeY,GLfloat sizeZ, GLfloat pX, GLfloat pY, GLfloat pZ){
+		escena->agregaObjeto(nombre, (Objeto *) new Cubo(1,0.0,1.0,0.0));
+		escena->objetos [nombre]->posX=pX;
+		escena->objetos [nombre]->posZ=pZ;
+		escena->objetos [nombre]->posY=pY;
+		escena->objetos [nombre]->escalaX=sizeX;
+		escena->objetos [nombre]->escalaZ=sizeZ;
+		escena->objetos [nombre]->escalaY=sizeY;
+}
+
+void demuestraPared()
+{
+  escena->agregaObjeto("pared", (Objeto *) new Cubo(5, 0.0, 0.0, 1.0));
+  escena->objetos["pared"]->posZ=-2.50;
+  escena->objetos["pared"]->posY=2.5;
+  
+}
+
 void demuestraCubo()
 {
-	escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(1.0, 1.0, 0.0, 0.0));
+	/*escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(1.0, 1.0, 0.0, 0.0));
 	escena->objetos["cuboAvatar"]->agregaDescendiente("frente", (Objeto *) new Esfera(0.1, 20, 20, 0.0, 1.0, 0.0));
 	escena->objetos["cuboAvatar"]->descendientes["frente"]->posZ=-0.5;
 	//escena->objetos["cuboAvatar"]->posZ=5.0;
-	escena->objetos["cuboAvatar"]->posY=-1.0;
+	escena->objetos["cuboAvatar"]->posY=-1.0;*/
   
+  escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(0.5, 1.0, 0.0, 0.0));
+  escena->objetos["cuboAvatar"]->posZ=5.0;
+  escena->objetos["cuboAvatar"]->posY=0.25;
 }
 
 void referencias(){
@@ -97,8 +121,10 @@ void creaEscena()
 {
 	//demuestraModelo();
 	//demuestraMateriales();
+	//nombre, profundidad en x, y y z, pos en "x", "y" y"z"
+	plano("plataforma",40.0,0.01,40.0, 0.0, -0.005, 0.0);
+	demuestraPared();
 	referencias();
 	demuestraCubo();
-
 }
 

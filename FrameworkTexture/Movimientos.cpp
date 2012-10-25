@@ -1,5 +1,33 @@
 #include "Movimientos.h"
 #include "misInteracciones.h"
+#include "iostream"
+
+
+//solo verifica que exista colision con el objeto cuboAvatar
+bool collision(){
+	map <string, Objeto *>::iterator it1;
+	map <string, Objeto *>::iterator it;
+	//buscar avatar y guardar la localidad donde se encuentra en el map
+	it1 = escena->objetos.find("cuboAvatar");
+	//por cada objeto declarado en la clase
+	for ( it=escena->objetos.begin() ; it != escena->objetos.end(); it++){
+		//buscar solo el objeto que tenga el nombre de pared
+		if(it->first == "pared"){
+			// imprimir pos de la pared y el avatar
+			cout << it->first << " pos Z:" << it->second->posZ << " pos Z:"<< it1->first << " pos Z:"  << it1->second->posZ;
+			cout<<endl;
+				//validar la pos
+			if((it->second->posZ + 2.5) >=  (it1->second->posZ -.25)){
+				cout<<"se esta pasando!!!"<<endl;
+				return true;
+			}
+			
+		}
+	}
+	return false;
+
+}
+
 
 double degToRad(double deg){
 	return deg*M_PI/180;
@@ -7,14 +35,6 @@ double degToRad(double deg){
 
 //hacia la camara es positivo
 void moverAdelante(){
-	Objeto *aux=escena->objetos["cuboAvatar"];
-	double rotYRad= degToRad(aux->rotY);
-	//mueve la camara default hacia adelante
-	
-	camaraPrimeraPersona->zview+= dtran * (cos(rotYRad));
-	camaraPrimeraPersona->xview+= dtran * (sin(rotYRad));
-	
-	
 	/*printf("Angulo de rotY en grados: %f\n", aux->rotY);
 	printf("Angulo de rotY en radianes: %f\n", rotYRad);
 	printf("(sin(rotYRad)): %f\n", (sin(rotYRad)));
@@ -29,11 +49,19 @@ void moverAdelante(){
 	printf("(cos(degreesRotY)): %f\n", (cos(rotYRad)));
 	printf("Z: posIni: %f\n", aux->posZ);
 	printf("Componente de desp en Z: %f\n", dtran * (cos(rotYRad)));*/
-	aux->posZ-= dtran * (cos(rotYRad));
 	//printf("Z: posFin: %f\n", aux->posZ);
-	aux->posX-=  dtran * (sin(rotYRad));
 
-	redimensiona(currWidth,currHeight);		  
+	if (!collision()){// si no hay colisiones, entoncespuede continuar
+		Objeto *aux=escena->objetos["cuboAvatar"];
+		double rotYRad= degToRad(aux->rotY);
+		//mueve la camara hacia adelante
+		camaraPrimeraPersona->zview+= dtran * (cos(rotYRad));
+		camaraPrimeraPersona->xview+= dtran * (sin(rotYRad));
+		//mueve al avatar hacia adelante
+		aux->posZ-= dtran * (cos(rotYRad));
+		aux->posX-=  dtran * (sin(rotYRad));
+		redimensiona(currWidth,currHeight);		  
+	} 
 }
 
 void girarIzquierda(){
