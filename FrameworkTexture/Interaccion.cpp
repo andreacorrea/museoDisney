@@ -45,13 +45,22 @@ void keyboard(unsigned char key,int x,int y)
 			  case 'w': moverAdelante();
 						break;
 
-			  case 's': moverAtras();
-						break;
-
 			  case 'a': girarIzquierda();
 						break;
 
 			  case 'd': girarDerecha();
+						break;
+
+			  case '1': activa=camaraDefault;
+		            redimensiona(currWidth,currHeight);
+		            break;
+		            
+			  case '2': activa=camaraZenital;
+						redimensiona(currWidth,currHeight);
+						break;
+
+			  case '3': activa=camaraPrimeraPersona;
+						redimensiona(currWidth,currHeight);
 						break;
 
 			case ESCAPE: exit(0);
