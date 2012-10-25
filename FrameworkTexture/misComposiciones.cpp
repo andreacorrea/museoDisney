@@ -18,6 +18,7 @@ void demuestraModelo()
 {
   escena->agregaObjeto("ejemplo", (Objeto *) new Modelo("al"));
   escena->objetos["ejemplo"]->escalaUniforme(3.0);
+  
 }
 
 
@@ -67,9 +68,11 @@ void demuestraMateriales()
 
 void demuestraCubo()
 {
-  escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(0.5, 1.0, 0.0, 0.0));
-  escena->objetos["cuboAvatar"]->posZ=5.0;
-  escena->objetos["cuboAvatar"]->posY=-1.0;
+	escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(1.0, 1.0, 0.0, 0.0));
+	escena->objetos["cuboAvatar"]->agregaDescendiente("frente", (Objeto *) new Esfera(0.1, 20, 20, 0.0, 1.0, 0.0));
+	escena->objetos["cuboAvatar"]->descendientes["frente"]->posZ=-0.5;
+	//escena->objetos["cuboAvatar"]->posZ=5.0;
+	escena->objetos["cuboAvatar"]->posY=-1.0;
   
 }
 
