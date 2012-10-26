@@ -124,6 +124,7 @@ void creaEscena()
 	//demuestraMateriales();
 	//nombre, profundidad en x, y y z, pos en "x", "y" y"z"
 	//plano("plataforma",40.0,0.01,40.0, 0.0, -0.005, 0.0);
+
 	//demuestraPared();
 	//referencias();
 	//demuestraCubo();
