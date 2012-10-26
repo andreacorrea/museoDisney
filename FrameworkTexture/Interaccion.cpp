@@ -53,7 +53,7 @@ void keyboard(unsigned char key,int x,int y)
 				break;
 
 			case 'w':
-				if(activa==camaraPrimeraPersona){
+				if(activa==camaraPrimeraPersona || activa == camaraZenital){
 					moverAdelante();
 				}else if(activa ==camaraVistaExterior){
 					moverArriba();
@@ -68,11 +68,20 @@ void keyboard(unsigned char key,int x,int y)
 				break;
 
 			case 'a':
-				girarIzquierda();
+				if(activa == camaraPrimeraPersona || activa == camaraZenital){
+					girarIzquierda();
+				}else if(activa == camaraVistaExterior){
+					exploraPorIzquierda();
+				}
+				
 				break;
 
 			case 'd':
-				girarDerecha();
+				if(activa == camaraPrimeraPersona || activa == camaraZenital){
+					girarDerecha();
+				}else if(activa == camaraVistaExterior){
+					exploraPorDerecha();
+				}
 				break;
 
 			case '1':
@@ -81,16 +90,21 @@ void keyboard(unsigned char key,int x,int y)
 				break;
 		            
 			case '2':
-				activa=camaraSeguridad;
-				redimensiona(currWidth,currHeight);
-				break;
-
-			case '3':
 				activa=camaraVistaExterior;
 				redimensiona(currWidth,currHeight);
 				break;
 
-			case '4': 
+			case '3':
+				activa=camaraSeguridad1;
+				redimensiona(currWidth,currHeight);
+				break;
+
+			case '4':
+				activa=camaraSeguridad2;
+				redimensiona(currWidth,currHeight);
+				break;
+
+			case '5': 
 				activa=camaraZenital;
 				redimensiona(currWidth,currHeight);
 				break;

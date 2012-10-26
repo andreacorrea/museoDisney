@@ -47,30 +47,24 @@ void moverAdelante(){
 		Objeto *aux=escena->objetos["cuboAvatar"];
 		double rotYRad= degToRad(aux->rotY);
 		//mueve la camara hacia adelante
-	if (!collision(aux->rotY)){// si no hay colisiones, entoncespuede continuar
+	//if (!collision(aux->rotY)){// si no hay colisiones, entoncespuede continuar
 		camaraPrimeraPersona->zview+= dtran;
 		//camaraPrimeraPersona->xview+= dtran;
 		//mueve al avatar hacia adelante
 		aux->posZ-= dtran * (cos(rotYRad));
 		aux->posX-=  dtran * (sin(rotYRad));
-	} 
+	//} 
 	redimensiona(currWidth,currHeight);
 }
 
 void girarIzquierda(){
-	printf("entra girar izq\n");
-	if(activa == camaraVistaExterior){
-		printf("giraIzquierda cam ext\n");
-		activa->yrot+=MOUSE_MUL_RY * drot;
-	}else if(activa == camaraPrimeraPersona){
-		printf("giraIzquierda cam 1era persona\n");
-		Objeto *aux=escena->objetos["cuboAvatar"];
-		//rota al avatar hacia izquierda
-		aux->rotY+=MOUSE_MUL_RY * drot;
+	printf("giraIzquierda cam 1era persona\n");
+	Objeto *aux=escena->objetos["cuboAvatar"];
+	//rota al avatar hacia izquierda
+	aux->rotY+=MOUSE_MUL_RY * drot;
 	
-		//rota la camara hacia izquierda
-		//camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
-	}
+	//rota la camara hacia izquierda
+	//camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
 	redimensiona(currWidth, currHeight);
 	
 	/*
@@ -92,18 +86,13 @@ void girarIzquierda(){
 }
 
 void girarDerecha(){
-
-	if(activa == camaraVistaExterior){
-		activa->yrot-=MOUSE_MUL_RY * drot;
-	}else if(activa == camaraPrimeraPersona){
-		Objeto *aux=escena->objetos["cuboAvatar"];
-		//rota al avatar hacia derecha
-		aux->rotY-=MOUSE_MUL_RY * drot;
+	Objeto *aux=escena->objetos["cuboAvatar"];
+	//rota al avatar hacia derecha
+	aux->rotY-=MOUSE_MUL_RY * drot;
 	
-		//rota la camara hacia derecha
-		//camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
+	//rota la camara hacia derecha
+	//camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
 		
-	}
 	redimensiona(currWidth, currHeight);
 }
 
@@ -141,4 +130,14 @@ void alejar(){
 		camaraVistaExterior->zview-=dtran;
 		redimensiona(currWidth, currHeight);
 	}
+}
+
+void exploraPorIzquierda(){
+	activa->yrot+=MOUSE_MUL_RY * drot;
+	redimensiona(currWidth, currHeight);
+}
+
+void exploraPorDerecha(){
+	activa->yrot-=MOUSE_MUL_RY * drot;
+	redimensiona(currWidth, currHeight);
 }

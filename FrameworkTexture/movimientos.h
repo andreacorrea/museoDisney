@@ -7,3 +7,5 @@ void moverArriba();
 void moverAbajo();
 void acercar();
 void alejar();
+void exploraPorIzquierda();
+void exploraPorDerecha();
