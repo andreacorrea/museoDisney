@@ -46,53 +46,40 @@ double degToRad(double deg){
 void moverAdelante(){
 		Objeto *aux=escena->objetos["cuboAvatar"];
 		double rotYRad= degToRad(aux->rotY);
-		//mueve la camara hacia adelante
-	//if (!collision(aux->rotY)){// si no hay colisiones, entoncespuede continuar
-		camaraPrimeraPersona->zview+= dtran;
-		//camaraPrimeraPersona->xview+= dtran;
-		//mueve al avatar hacia adelante
 		aux->posZ-= dtran * (cos(rotYRad));
 		aux->posX-=  dtran * (sin(rotYRad));
-	//} 
-	redimensiona(currWidth,currHeight);
+		camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY));
+		camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY));
+		
+		redimensiona(currWidth,currHeight);
 }
 
 void girarIzquierda(){
-	printf("giraIzquierda cam 1era persona\n");
 	Objeto *aux=escena->objetos["cuboAvatar"];
 	//rota al avatar hacia izquierda
 	aux->rotY+=MOUSE_MUL_RY * drot;
-	
+
 	//rota la camara hacia izquierda
 	//camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
+
+	//traslada camara
+	camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY));
+	camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY));
+
 	redimensiona(currWidth, currHeight);
-	
-	/*
-
-	GLdouble rotYRad=degToRad(aux->rotY);
-	GLfloat posX = 2 * sin(rotYRad);
-	GLfloat posZ = 2 * cos(rotYRad);
-
-	printf("Cam PosIniX: %f\n", camaraPrimeraPersona->xview);
-	printf("Cam PosIniZ: %f\n", camaraPrimeraPersona->zview);
-
-	camaraPrimeraPersona->zview=-posZ;
-	camaraPrimeraPersona->xview=-posX;
-
-	printf("Cam PosFinX: %f\n", camaraPrimeraPersona->xview);
-	printf("Cam PosFinZ: %f\n", camaraPrimeraPersona->zview);
-	
-	redimensiona(currWidth, currHeight);*/
 }
 
 void girarDerecha(){
 	Objeto *aux=escena->objetos["cuboAvatar"];
-	//rota al avatar hacia derecha
+	//rota al avatar hacia derecha	
 	aux->rotY-=MOUSE_MUL_RY * drot;
-	
+	//traslada camara
+	camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY));
+	camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY));
 	//rota la camara hacia derecha
 	//camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
-		
+	//camaraPrimeraPersona->xview+=20;	
+
 	redimensiona(currWidth, currHeight);
 }
 

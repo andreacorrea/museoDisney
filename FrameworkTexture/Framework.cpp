@@ -62,11 +62,17 @@ void redimensiona(int width,int height) {
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();    
   gluPerspective(activa->fovy,(GLdouble)width/(GLdouble)height,activa->near,activa->far);
-  glTranslatef(activa->xview,activa->yview,activa->zview); 
-  glRotatef(activa->xrot,1.0,0.0,0.0);
-  glRotatef(activa->yrot,0.0,1.0,0.0);
-  glRotatef(activa->zrot,0.0,0.0,1.0);
-  glViewport(0,0,width,height);
+  if(activa != camaraPrimeraPersona){
+	  glTranslatef(activa->xview,activa->yview,activa->zview); 
+	  glRotatef(activa->xrot,1.0,0.0,0.0);
+	  glRotatef(activa->yrot,0.0,1.0,0.0);
+	  glRotatef(activa->zrot,0.0,0.0,1.0);
+	  glViewport(0,0,width,height);
+  }else{
+	  gluLookAt(camaraPrimeraPersona->xview, camaraPrimeraPersona->yview, camaraPrimeraPersona->zview, escena->objetos["cuboAvatar"]->posX, camaraPrimeraPersona->yview, escena->objetos["cuboAvatar"]->posZ, 0, 1, 0);
+	  glViewport(0,0,width,height);
+  }
+  
   glMatrixMode(GL_MODELVIEW);
   ////////////////////////
 	/*glMatrixMode(GL_PROJECTION); //hace la matriz projection actual
