@@ -68,6 +68,11 @@ void redimensiona(int width,int height) {
   glRotatef(activa->zrot,0.0,0.0,1.0);
   glViewport(0,0,width,height);
   glMatrixMode(GL_MODELVIEW);
+  ////////////////////////
+	/*glMatrixMode(GL_PROJECTION); //hace la matriz projection actual
+	glLoadIdentity(); //martiz identidad
+	gluLookAt(10,10,10,0,0,0,10,0,0);
+	glMatrixMode(GL_MODELVIEW);*/
 }
 
 int main( int argc, char **argv) {
