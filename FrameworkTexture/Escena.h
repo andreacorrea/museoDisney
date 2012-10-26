@@ -36,7 +36,7 @@
 #define copia(color,r,g,b) color[0]=r,color[1]=g,color[2]=b
 
 //Defaults para traslacion y rotacion interactiva
-#define DELTA_TRAN 0.25
+#define DELTA_TRAN 0.10
 #define DELTA_ROT  0.1
 
 //Multiplicadores para interpretar desplazamientos de mouse
