@@ -17,9 +17,10 @@ void defineLuces()
 
 void demuestraModelo()
 {
-  escena->agregaObjeto("ejemplo", (Objeto *) new Modelo("al"));
-  escena->objetos["ejemplo"]->escalaUniforme(3.0);
-  
+  escena->agregaObjeto("ejemplo", (Objeto *) new Modelo("castillo1"));
+  escena->objetos["ejemplo"]->escalaUniforme(20.0);
+  escena->objetos["ejemplo"]->rotY=-90;
+	escena->objetos["ejemplo"]->posY=5.75;
 }
 
 
@@ -99,6 +100,7 @@ void demuestraCubo()
   escena->objetos["cuboAvatar"]->agregaDescendiente("frente", (Objeto *) new Esfera(0.1, 20, 20, 0.8, 0.2, 0.5));
   escena->objetos["cuboAvatar"]->descendientes["frente"]->posZ=-0.25;
   escena->objetos["cuboAvatar"]->posY=0.25;
+  escena->objetos["cuboAvatar"]->posZ=20;
 }
 
 void referencias(){
@@ -127,6 +129,6 @@ void creaEscena()
 
 	//demuestraPared();
 	//referencias();
-	//demuestraCubo();
+	demuestraCubo();
 }
 

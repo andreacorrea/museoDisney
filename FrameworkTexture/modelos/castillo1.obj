@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib entrega_Parcial2_castillo.mtl
+mtllib castillo1.mtl
 g default
 v -484.354767 -8.365847 507.293884
 v -382.895996 -8.365847 507.293884

@@ -77,27 +77,13 @@ void girarIzquierda(){
 	
 	//rota la camara hacia derecha
 
-	camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
+	//camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
 	
-	//double rotYRad= degToRad(aux->rotY);
-	//printf("Angulo de rotY en radianes: %f\n", rotYRad);
-	/*camaraPrimeraPersona->zview=-(5*cos(rotYRad));
-	camaraPrimeraPersona->xview=-(5*sin(rotYRad));*/
 
 	redimensiona(currWidth, currHeight);
 
-	printf("Angulo de rotY de avatar: %f\n", escena->objetos["cuboAvatar"]->rotY);
-	printf("Angulo de rotY de camara: %f\n", camaraPrimeraPersona->yrot);
-	printf("PosZ de avatar: %f\n", escena->objetos["cuboAvatar"]->posZ);
-	printf("PosZ de camara: %f\n", camaraPrimeraPersona->zview);
-
-	/*Objeto *aux=escena->objetos["cuboAvatar"];
-	//rota al avatar hacia izquierda
-	aux->rotY+=MOUSE_MUL_RY * drot;
-	//rota la camara hacia izquierda
-	camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
-
-	printf("Angulo de rotY: %f\n", MOUSE_MUL_RY * drot);
+	
+	/*
 
 	GLdouble rotYRad=degToRad(aux->rotY);
 	GLfloat posX = 2 * sin(rotYRad);
@@ -117,7 +103,7 @@ void girarIzquierda(){
 
 void girarDerecha(){
 	//rota la camara hacia derecha
-	camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
+	//camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
 	
 	//rota al avatar hacia derecha
 	escena->objetos["cuboAvatar"]->rotY-=MOUSE_MUL_RY * drot;
