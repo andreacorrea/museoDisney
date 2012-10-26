@@ -27,7 +27,7 @@ void miTecladoEspecial(int key,int x,int y)
 void miMouseClick(int button, int state, int x, int y)
 {
   //Definir comportamientos particulares para mouse click
- 
+	escena->objetos["cuboParaElClic"]->velRotX=0.5;
   //Para desactivar comportamiento por default, hacer mouseDefault=false   
 }
 

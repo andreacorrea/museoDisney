@@ -103,6 +103,14 @@ void demuestraCubo()
   escena->objetos["cuboAvatar"]->posZ=20;
 }
 
+void cuboParaElClic(){
+escena->agregaObjeto("cuboParaElClic", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
+escena->objetos["cuboParaElClic"]->posZ=-0.25;
+escena->objetos["cuboParaElClic"]->posX=-1.9;
+escena->objetos["cuboParaElClic"]->posY=1.0;
+
+}
+
 void referencias(){
 	escena->agregaObjeto("x-", (Objeto *) new Esfera(0.1, 20,20,0,0,1));
 	escena->objetos["x-"]->posX=-3;
@@ -130,5 +138,6 @@ void creaEscena()
 	//demuestraPared();
 	//referencias();
 	demuestraCubo();
+	cuboParaElClic();
 }
 
