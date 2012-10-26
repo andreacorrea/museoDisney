@@ -4,7 +4,7 @@
 
 
 //solo verifica que exista colision con el objeto cuboAvatar
-bool collision(){
+bool collision(GLfloat rotY){
 	map <string, Objeto *>::iterator it1;
 	map <string, Objeto *>::iterator it;
 	//buscar avatar y guardar la localidad donde se encuentra en el map
@@ -14,16 +14,25 @@ bool collision(){
 		//buscar solo el objeto que tenga el nombre de pared
 		if(it->first == "pared"){
 			// imprimir pos de la pared y el avatar
-			cout << it->first << " pos Z:" << it->second->posZ << " pos Z:"<< it1->first << " pos Z:"  << it1->second->posZ;
-			cout<<endl;
+			//cout << it->first << " pos Z:" << it->second->posZ << " pos Z:"<< it1->first << " pos Z:"  << it1->second->posZ<<endl;
 				//validar la pos
+			/*
 			if((it->second->posZ + 2.5) >=  (it1->second->posZ -.25)){
 				cout<<"se esta pasando!!!"<<endl;
 				return true;
-			}
+			}*/
 			
 		}
 	}
+	if(it1->second->posZ < -2.6  && (((abs((int)rotY)%360)<90 || (abs((int)rotY)%360)>270))){
+		return true;
+	}
+	//if(it1->second->posX < -1.7  && ((abs((int)rotY)%360)<180 || (abs((int)rotY)%360)>0)){
+	if(1 && ((abs((int)rotY)%360)<180)){
+		printf("%i\n",(abs((int)rotY)%360));
+		return true;
+	}
+	cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<rotY<<endl;
 	return false;
 
 }
@@ -51,10 +60,11 @@ void moverAdelante(){
 	printf("Componente de desp en Z: %f\n", dtran * (cos(rotYRad)));*/
 	//printf("Z: posFin: %f\n", aux->posZ);
 
-	if (!collision()){// si no hay colisiones, entoncespuede continuar
+	
 		Objeto *aux=escena->objetos["cuboAvatar"];
 		double rotYRad= degToRad(aux->rotY);
 		//mueve la camara hacia adelante
+	if (!collision(aux->rotY)){// si no hay colisiones, entoncespuede continuar
 		camaraPrimeraPersona->zview+= dtran;
 		//camaraPrimeraPersona->xview+= dtran;
 		//mueve al avatar hacia adelante
