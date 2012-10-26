@@ -5,6 +5,8 @@
 extern Camara *camaraDefault;
 extern Camara *activa;
 extern Camara *camaraPrimeraPersona;
+extern Camara *camaraSeguridad;
+extern Camara *camaraVistaExterior;
 
 //Definiciones de camaras especiales
 extern Camara *camaraZenital;

@@ -8,61 +8,96 @@ void keyboard(unsigned char key,int x,int y)
 	miTeclado(key, x, y);
 	//Atiende interacciones por default para teclas simples
 	if(tecladoDefault)
-		switch(key)
-		{
-			  case '+': activa->zview+=dtran;
-					  redimensiona(currWidth,currHeight);		                       
-					  break;
+		switch(key){
+							  
+			case '+': 
+				if(activa == camaraVistaExterior){
+					acercar();
+				}
+				break;
 
-			  case '-': activa->zview-=dtran;
-					  redimensiona(currWidth,currHeight);
-					  break;
+			case '-': 
+				if(activa == camaraVistaExterior){
+					alejar();
+				}
+				break;
 
-			  case 'x': activa->xrot+=drot;
-						redimensiona(currWidth,currHeight);
-						break;
-			  case 'y': activa->yrot+=drot;
-						redimensiona(currWidth,currHeight);
-						break;
-			  case 'z': activa->zrot+=drot;		  
-						redimensiona(currWidth,currHeight);
-						break;
+			case 'x':
+				activa->xrot+=drot;
+				redimensiona(currWidth,currHeight);
+				break;
 
-			  case 'X': activa->xrot-=drot;
-						redimensiona(currWidth,currHeight);
-						break;
+			case 'y': 
+				activa->yrot+=drot;
+				redimensiona(currWidth,currHeight);
+				break;
 
-			  case 'Y': activa->yrot-=drot;
-						redimensiona(currWidth,currHeight);
-						break;
+			case 'z': 
+				activa->zrot+=drot;		  
+				redimensiona(currWidth,currHeight);
+				break;
 
-			  case 'Z': activa->zrot-=drot;
-						redimensiona(currWidth,currHeight);
-						break;
+			case 'X':
+				activa->xrot-=drot;
+				redimensiona(currWidth,currHeight);
+				break;
 
-			  case 'w': moverAdelante();
-						break;
+			case 'Y':
+				activa->yrot-=drot;
+				redimensiona(currWidth,currHeight);
+				break;
 
-			  case 'a': girarIzquierda();
-						break;
+			case 'Z':
+				activa->zrot-=drot;
+				redimensiona(currWidth,currHeight);
+				break;
 
-			  case 'd': girarDerecha();
-						break;
+			case 'w':
+				if(activa==camaraPrimeraPersona){
+					moverAdelante();
+				}else if(activa ==camaraVistaExterior){
+					moverArriba();
+				}
+				
+				break;
 
-			  case '1': activa=camaraDefault;
-		            redimensiona(currWidth,currHeight);
-		            break;
+			case 's':
+				if(activa ==camaraVistaExterior){
+					moverAbajo();
+				}
+				break;
+
+			case 'a':
+				girarIzquierda();
+				break;
+
+			case 'd':
+				girarDerecha();
+				break;
+
+			case '1':
+				activa=camaraPrimeraPersona;
+				redimensiona(currWidth,currHeight);
+				break;
 		            
-			  case '2': activa=camaraZenital;
-						redimensiona(currWidth,currHeight);
-						break;
+			case '2':
+				activa=camaraSeguridad;
+				redimensiona(currWidth,currHeight);
+				break;
 
-			  case '3': activa=camaraPrimeraPersona;
-						redimensiona(currWidth,currHeight);
-						break;
+			case '3':
+				activa=camaraVistaExterior;
+				redimensiona(currWidth,currHeight);
+				break;
 
-			case ESCAPE: exit(0);
-						 break;
+			case '4': 
+				activa=camaraZenital;
+				redimensiona(currWidth,currHeight);
+				break;
+
+			case ESCAPE: 
+				exit(0);
+				break;
 		}
 }
 

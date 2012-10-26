@@ -50,6 +50,15 @@
 //default para loopFrames en AlphaQuads
 #define DEFAULT_LOOP_FRAMES 0xFFFFFFFF
  
+//default para rotaciones y traslaciones de camara Exterior
+#define MAX_ZVIEW_ALEJAMIENTO_CAMARA_EXTERIOR -30
+#define MAX_XROT_ACERCAMIENTO 15
+#define MAX_ZVIEW_ACERCAMIENTO_AL_CASTILLO -10
+#define MAX_ZVIEW_ACERCAMIENTO_AL_PUENTE -19
+#define MAX_XROT_CAMARA_EXTERIOR 60
+#define MIN_XROT_CAMARA_EXTERIOR 0
+
+
 
 // Estructura del encabezado del archivo de textura TGA
 #pragma pack(1)

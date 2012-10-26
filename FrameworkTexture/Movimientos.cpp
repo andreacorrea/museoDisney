@@ -35,22 +35,7 @@ double degToRad(double deg){
 
 //hacia la camara es positivo
 void moverAdelante(){
-	/*printf("Angulo de rotY en grados: %f\n", aux->rotY);
-	printf("Angulo de rotY en radianes: %f\n", rotYRad);
-	printf("(sin(rotYRad)): %f\n", (sin(rotYRad)));
-	printf("xview: posIni: %f\n", activa->xview);*/
 	
-	//printf("xview: posFin: %f\n", activa->xview);
-
-	//mueve al avatar hacia adelante
-	
-	/*printf("Angulo de rotY en grados: %f\n", aux->rotY);
-	printf("Angulo de rotY en radianes: %f\n", rotYRad);
-	printf("(cos(degreesRotY)): %f\n", (cos(rotYRad)));
-	printf("Z: posIni: %f\n", aux->posZ);
-	printf("Componente de desp en Z: %f\n", dtran * (cos(rotYRad)));*/
-	//printf("Z: posFin: %f\n", aux->posZ);
-
 	if (!collision()){// si no hay colisiones, entoncespuede continuar
 		Objeto *aux=escena->objetos["cuboAvatar"];
 		double rotYRad= degToRad(aux->rotY);
@@ -60,28 +45,27 @@ void moverAdelante(){
 		//mueve al avatar hacia adelante
 		aux->posZ-= dtran * (cos(rotYRad));
 		aux->posX-=  dtran * (sin(rotYRad));
-		redimensiona(currWidth,currHeight);		  
 	} 
-
-	printf("Angulo de rotY de avatar: %f\n", escena->objetos["cuboAvatar"]->rotY);
-	printf("Angulo de rotY de camara: %f\n", camaraPrimeraPersona->yrot);
-	printf("PosZ de avatar: %f\n", escena->objetos["cuboAvatar"]->posZ);
-	printf("PosZ de camara: %f\n", camaraPrimeraPersona->zview);
-		
+	
+	redimensiona(currWidth,currHeight);
+	
 }
 
 void girarIzquierda(){
-	Objeto *aux=escena->objetos["cuboAvatar"];
-	//rota al avatar hacia derecha
-	escena->objetos["cuboAvatar"]->rotY+=MOUSE_MUL_RY * drot;
+	printf("entra girar izq\n");
+	if(activa == camaraVistaExterior){
+		printf("giraIzquierda cam ext\n");
+		activa->yrot+=MOUSE_MUL_RY * drot;
+	}else if(activa == camaraPrimeraPersona){
+		printf("giraIzquierda cam 1era persona\n");
+		Objeto *aux=escena->objetos["cuboAvatar"];
+		//rota al avatar hacia izquierda
+		aux->rotY+=MOUSE_MUL_RY * drot;
 	
-	//rota la camara hacia derecha
-
-	//camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
-	
-
+		//rota la camara hacia izquierda
+		//camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
+	}
 	redimensiona(currWidth, currHeight);
-
 	
 	/*
 
@@ -102,11 +86,53 @@ void girarIzquierda(){
 }
 
 void girarDerecha(){
-	//rota la camara hacia derecha
-	//camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
+
+	if(activa == camaraVistaExterior){
+		activa->yrot-=MOUSE_MUL_RY * drot;
+	}else if(activa == camaraPrimeraPersona){
+		Objeto *aux=escena->objetos["cuboAvatar"];
+		//rota al avatar hacia derecha
+		aux->rotY-=MOUSE_MUL_RY * drot;
 	
-	//rota al avatar hacia derecha
-	escena->objetos["cuboAvatar"]->rotY-=MOUSE_MUL_RY * drot;
-	//float distance=5;      // Straight line distance between the camera and look at point
+		//rota la camara hacia derecha
+		//camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
+		
+	}
 	redimensiona(currWidth, currHeight);
+}
+
+void moverArriba(){
+	if(camaraVistaExterior->xrot< MAX_XROT_CAMARA_EXTERIOR){
+		camaraVistaExterior->xrot+=dtran;
+		redimensiona(currWidth, currHeight);
+	}
+	
+}
+
+void moverAbajo(){
+	if(camaraVistaExterior->xrot>MIN_XROT_CAMARA_EXTERIOR){
+		camaraVistaExterior->xrot-=dtran;
+		redimensiona(currWidth, currHeight);
+	}
+}
+
+void acercar(){
+	if(camaraVistaExterior->xrot < MAX_XROT_ACERCAMIENTO ){
+		if(camaraVistaExterior->zview < MAX_ZVIEW_ACERCAMIENTO_AL_PUENTE){
+			camaraVistaExterior->zview+=dtran;
+			redimensiona(currWidth, currHeight);
+		}
+	}else{
+		if(camaraVistaExterior->zview<MAX_ZVIEW_ACERCAMIENTO_AL_CASTILLO){
+			camaraVistaExterior->zview+=dtran;
+			redimensiona(currWidth, currHeight);
+		}
+	}
+}
+
+void alejar(){
+	if(camaraVistaExterior->zview > MAX_ZVIEW_ALEJAMIENTO_CAMARA_EXTERIOR){
+		camaraVistaExterior->zview-=dtran;
+		redimensiona(currWidth, currHeight);
+	}
 }
