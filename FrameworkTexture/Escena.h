@@ -3,6 +3,7 @@
 #include <map>
 #include <math.h>
 #include <string>
+#include <vector>
 // Para Windows:
 #include <gl/glut.h>
 // Para Mac OS:
@@ -88,6 +89,7 @@ class Esfera;
 class Tetera;
 class Modelo;
 class AlphaQuad;
+class Poses;
 
 class Luz;
 class Camara;
@@ -209,6 +211,17 @@ public:
 			  GLfloat alphaVel);
 	~AlphaQuad();
 	void forma();
+};
+
+class Poses : Objeto
+{
+	public:
+		int nposes;
+		unsigned int framerate;
+		int poseactual;
+		vector <Modelo *> poses;
+		Poses(char *prefijo, int nposes, unsigned int framerate);
+		void forma();
 };
 
 

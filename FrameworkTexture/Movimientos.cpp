@@ -23,6 +23,8 @@ bool collision(GLfloat rotY){
             
         }
     }*/
+
+	/*
     int angulo;
     angulo = ((int)rotY) %360;
     if(rotY < 0){
@@ -56,7 +58,7 @@ bool collision(GLfloat rotY){
         }
     }
 
-        cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
+        cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;*/
     return false;
 
 }
@@ -70,12 +72,12 @@ double degToRad(double deg){
 void moverAdelante(){
 
 			Objeto *aux=escena->objetos["cuboAvatar"];
-		if(!collision(aux->rotY)){
-			double rotYRad= degToRad(aux->rotY);
+		if(!collision(aux->rotY-180)){
+			double rotYRad= degToRad(aux->rotY-180);
 			aux->posZ-= dtran * (cos(rotYRad));
 			aux->posX-=  dtran * (sin(rotYRad));
-			camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY));
-			camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY));
+			camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY-180));
+			camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY-180));
 		
 		redimensiona(currWidth,currHeight);
 	}
@@ -90,8 +92,8 @@ void girarIzquierda(){
 	//camaraPrimeraPersona->yrot-=MOUSE_MUL_RY * drot;
 
 	//traslada camara
-	camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY));
-	camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY));
+	camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY-180));
+	camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY-180));
 
 	redimensiona(currWidth, currHeight);
 }
@@ -101,8 +103,8 @@ void girarDerecha(){
 	//rota al avatar hacia derecha	
 	aux->rotY-=MOUSE_MUL_RY * drot;
 	//traslada camara
-	camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY));
-	camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY));
+	camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY-180));
+	camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY-180));
 	//rota la camara hacia derecha
 	//camaraPrimeraPersona->yrot+=MOUSE_MUL_RY * drot;
 	//camaraPrimeraPersona->xview+=20;	

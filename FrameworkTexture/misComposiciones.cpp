@@ -20,7 +20,7 @@ void demuestraModelo()
   escena->agregaObjeto("ejemplo", (Objeto *) new Modelo("castillo1"));
   escena->objetos["ejemplo"]->escalaUniforme(20.0);
   escena->objetos["ejemplo"]->rotY=-90;
-	escena->objetos["ejemplo"]->posY=5.75;
+	escena->objetos["ejemplo"]->posY=14.6;
 }
 
 
@@ -88,19 +88,19 @@ void demuestraPared()
   
 }
 
-void demuestraCubo()
+void muestraProtagonista()
 {
 	/*escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(1.0, 1.0, 0.0, 0.0));
 	escena->objetos["cuboAvatar"]->agregaDescendiente("frente", (Objeto *) new Esfera(0.1, 20, 20, 0.0, 1.0, 0.0));
 	escena->objetos["cuboAvatar"]->descendientes["frente"]->posZ=-0.5;
 	//escena->objetos["cuboAvatar"]->posZ=5.0;
 	escena->objetos["cuboAvatar"]->posY=-1.0;*/
-	
-  escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(0.5, 1.0, 0.0, 0.0));
-  escena->objetos["cuboAvatar"]->agregaDescendiente("frente", (Objeto *) new Esfera(0.1, 20, 20, 0.8, 0.2, 0.5));
-  escena->objetos["cuboAvatar"]->descendientes["frente"]->posZ=-0.25;
+	//escena->agregaObjeto("CuboAvatar",(Objeto *) new Poses("pose%d",5,3));
+  escena->agregaObjeto("cuboAvatar",(Objeto *) new Poses("pose%d",5,3));
+  //escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(0.5, 1.0, 0.0, 0.0));
   escena->objetos["cuboAvatar"]->posY=0.25;
   escena->objetos["cuboAvatar"]->posZ=20;
+  escena->objetos["cuboAvatar"]->rotY=180;
 }
 
 void cuboParaElClic(){
@@ -128,16 +128,21 @@ void referencias(){
 	escena->objetos["z+"]->posZ=3;
 }
 
+void pruebaPoses(){
+	//escena->agregaObjeto("poses",(Objeto *) new Poses("pose%d",5,3));
+}
+
 void creaEscena()
 {
 	demuestraModelo();
+	pruebaPoses();
 	//demuestraMateriales();
 	//nombre, profundidad en x, y y z, pos en "x", "y" y"z"
 	//plano("plataforma",40.0,0.01,40.0, 0.0, -0.005, 0.0);
 
 	//demuestraPared();
 	//referencias();
-	demuestraCubo();
+	muestraProtagonista();
 	cuboParaElClic();
 }
 

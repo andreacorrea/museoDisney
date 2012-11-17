@@ -925,3 +925,26 @@ Camara::Camara(GLfloat xview,GLfloat yview,GLfloat zview,
 }
 
 
+Poses :: Poses(char *prefijo, int nposes, unsigned int framerate)
+{
+	this ->nposes = nposes;
+	this->framerate = framerate;
+	this->poses.resize(nposes+1);
+	this->poseactual = 0;
+	char nombre[100];
+	for(int i=0; i<=nposes ;i++){
+		sprintf(nombre, prefijo, i);
+		this->poses[i] = new Modelo(nombre);
+	}
+}
+
+void Poses :: forma()
+{
+	if(escenaActual->currentFrame % framerate ==0){
+		poseactual++;
+	}
+	if(poseactual>nposes){
+		poseactual =0;
+	}
+	poses[poseactual]->forma();
+}
