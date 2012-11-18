@@ -104,10 +104,10 @@ void muestraProtagonista()
 }
 
 void cuboParaElClic(){
-escena->agregaObjeto("cuboParaElClic", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
-escena->objetos["cuboParaElClic"]->posZ=-0.25;
-escena->objetos["cuboParaElClic"]->posX=-1.9;
-escena->objetos["cuboParaElClic"]->posY=1.0;
+escena->agregaObjeto("cuboParaElClic1", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
+escena->objetos["cuboParaElClic1"]->posZ=-0.25;
+escena->objetos["cuboParaElClic1"]->posX=-1.9;
+escena->objetos["cuboParaElClic1"]->posY=1.0;
 
 }
 
@@ -128,12 +128,13 @@ void referencias(){
 	escena->objetos["z+"]->posZ=3;
 }
 
-void muestraCuadro(string nombreCuadro, string nombreTextura, GLfloat ancho, GLfloat alto, GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat rotY){
+void muestraCuadro(string nombreCuadro, string nombreTextura, GLfloat ancho, GLfloat alto, GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat rotY, GLfloat rotX){
 	escena->agregaObjeto(nombreCuadro, (Objeto *) new AlphaQuad(escena, nombreTextura, GL_REPEAT, 1.0, ancho, alto, 0.0, 0.0, 1.0, 0, 0.00));
 	escena->objetos[nombreCuadro]->posX=posX;
 	escena->objetos[nombreCuadro]->posY=posY;
 	escena->objetos[nombreCuadro]->posZ=posZ;
 	escena->objetos[nombreCuadro]->rotY=rotY;
+	escena->objetos[nombreCuadro]->rotX=rotX;
 }
 
 void muestraCuadros(){
@@ -146,22 +147,34 @@ void muestraCuadros(){
 	GLfloat paredFondoZ = -11.0;
 	GLfloat paredPuertaZ = -0.7;
 	//Cuadros primer piso
-	muestraCuadro("CuadroBlancanieves", "agua.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90);
-	muestraCuadro("CuadroAprendizBrujo", "moho.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0);
-	muestraCuadro("CuadroBellaYBestia", "stone.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0);
-	muestraCuadro("CuadroPinocho", "chrome.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90);
-	muestraCuadro("CuadroAladdin", "bumpy.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90);
+	muestraCuadro("CuadroBlancanieves", "agua.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
+	muestraCuadro("CuadroAprendizBrujo", "moho.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraCuadro("CuadroBellaYBestia", "stone.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraCuadro("CuadroPinocho", "chrome.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
+	muestraCuadro("CuadroAladdin", "bumpy.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
 	
 
 	//Cuadros segundo piso
 	
-	muestraCuadro("CuadroToyStory", "moho.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0);
-	muestraCuadro("CuadroIncreibles", "stone.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0);
-	muestraCuadro("CuadroNemo", "bumpy.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90);
-	muestraCuadro("CuadroUp", "chrome.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90);
-	muestraCuadro("CuadroWallE", "hoja.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0);
-	muestraCuadro("CuadroMonstersInc", "agua.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0);
+	muestraCuadro("CuadroToyStory", "moho.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraCuadro("CuadroIncreibles", "stone.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraCuadro("CuadroNemo", "bumpy.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
+	muestraCuadro("CuadroUp", "chrome.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
+	muestraCuadro("CuadroWallE", "hoja.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0, 0);
+	muestraCuadro("CuadroMonstersInc", "agua.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
 
+}
+
+void muestraCuadroSubirBajar(){
+	muestraCuadro("cuadroSubir", "agua.tga", 1.5, 1.5, -7, -0.725, -7, 0, 90);
+	//muestraCuadro("cuadroBajar", "agua.tga", 5, 5, 0, 0, 0, 0, 90);
+	//escena->objetos["cuadroSubir"]->anulaMaterial();
+	//muestraCuadro("cuadroSubir", "bumpy.tga", 1.5, 1.5, -6, -0.725, -3, 0, 90);
+	/*escena->objetos["cuadroSubir"]->defineMaterial(1.0,1.0,1.0,
+										 1.0,1.0,1.0,
+										 0.0,0.0,0.0,
+										 0.0,0.0,0.0,
+										 "bumpy.tga",GL_CLAMP,0.5,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,false);*/
 }
 
 void creaEscena()
@@ -175,7 +188,8 @@ void creaEscena()
 	//demuestraPared();
 	//referencias();
 	muestraProtagonista();
-	cuboParaElClic();
-	muestraCuadros();
+	//cuboParaElClic();
+	muestraCuadroSubirBajar();
+	//muestraCuadros();
 }
 
