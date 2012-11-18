@@ -97,24 +97,17 @@ void demuestraPared()
 
 void muestraProtagonista()
 {
-	/*escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(1.0, 1.0, 0.0, 0.0));
-	escena->objetos["cuboAvatar"]->agregaDescendiente("frente", (Objeto *) new Esfera(0.1, 20, 20, 0.0, 1.0, 0.0));
-	escena->objetos["cuboAvatar"]->descendientes["frente"]->posZ=-0.5;
-	//escena->objetos["cuboAvatar"]->posZ=5.0;
-	escena->objetos["cuboAvatar"]->posY=-1.0;*/
-	//escena->agregaObjeto("CuboAvatar",(Objeto *) new Poses("pose%d",5,3));
-  escena->agregaObjeto("cuboAvatar",(Objeto *) new Poses("pose%d",5,3));
-  //escena->agregaObjeto("cuboAvatar", (Objeto *) new Cubo(0.5, 1.0, 0.0, 0.0));
-  escena->objetos["cuboAvatar"]->posY=0.25;
-  escena->objetos["cuboAvatar"]->posZ=20;
-  escena->objetos["cuboAvatar"]->rotY=180;
+  escena->agregaObjeto("protagonista",(Objeto *) new Poses("pose%d",6,3));
+  escena->objetos["protagonista"]->posY=0.25;
+  escena->objetos["protagonista"]->posZ=20;
+  escena->objetos["protagonista"]->rotY=180;
 }
 
 void cuboParaElClic(){
-escena->agregaObjeto("cuboParaElClic1", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
-escena->objetos["cuboParaElClic1"]->posZ=-0.25;
-escena->objetos["cuboParaElClic1"]->posX=-1.9;
-escena->objetos["cuboParaElClic1"]->posY=1.0;
+escena->agregaObjeto("cuboParaElClic", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
+escena->objetos["cuboParaElClic"]->posZ=-0.25;
+escena->objetos["cuboParaElClic"]->posX=-1.9;
+escena->objetos["cuboParaElClic"]->posY=1.0;
 
 }
 
@@ -173,7 +166,8 @@ void muestraCuadros(){
 }
 
 void muestraCuadroSubirBajar(){
-	muestraCuadro("cuadroSubir", "agua.tga", 1.5, 1.5, -7, -0.725, -7, 0, 90);
+	muestraCuadro("cuadroSubir", "agua.tga", 1.5, 1.5, -7, FLOOR_1_Y, -7, 0, 90);
+	muestraCuadro("cuadroBajar", "bumpy.tga", 1.5, 1.5, -5, FLOOR_2_Y, -10, 0, 90);
 	//muestraCuadro("cuadroBajar", "agua.tga", 5, 5, 0, 0, 0, 0, 90);
 	//escena->objetos["cuadroSubir"]->anulaMaterial();
 	//muestraCuadro("cuadroSubir", "bumpy.tga", 1.5, 1.5, -6, -0.725, -3, 0, 90);
@@ -191,8 +185,8 @@ void creaEscena()
 	muestraSombrero();
 
 	muestraProtagonista();
-	//cuboParaElClic();
+	cuboParaElClic();
 	muestraCuadroSubirBajar();
-	//muestraCuadros();
+	muestraCuadros();
 }
 

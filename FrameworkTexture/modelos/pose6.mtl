@@ -1,0 +1,38 @@
+newmtl initialShadingGroup
+illum 4
+Kd 0.30 0.21 0.03
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl pasted__lambert2SG
+illum 4
+Kd 0.98 0.38 0.17
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl pasted__lambert3SG
+illum 4
+Kd 0.33 0.17 0.17
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl pasted__lambert4SG
+illum 4
+Kd 1.00 0.81 0.59
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl phong1SG
+illum 4
+Kd 1.00 0.91 0.91
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl surfaceShader1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
