@@ -15,14 +15,21 @@ void defineLuces()
 	escena->anguloLuz("light2", 30.0);
 }
 
-void demuestraModelo()
+void muestraCastillo()
 {
-  escena->agregaObjeto("ejemplo", (Objeto *) new Modelo("castillo1"));
-  escena->objetos["ejemplo"]->escalaUniforme(20.0);
-  escena->objetos["ejemplo"]->rotY=-90;
-	escena->objetos["ejemplo"]->posY=14.6;
+  escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
+  escena->objetos["castillo"]->escalaUniforme(20.0);
+  escena->objetos["castillo"]->rotY=-90;
+	escena->objetos["castillo"]->posY=14.6;
 }
 
+void muestraSombrero()
+{
+  escena->agregaObjeto("sombrero", (Objeto *) new Modelo("sombrero"));
+  escena->objetos["sombrero"]->escalaUniforme(1.9);
+  escena->objetos["sombrero"]->posY=1.15;
+  escena->objetos["sombrero"]->posZ=-5.0;
+}
 
 void demuestraMateriales()
 { 
@@ -179,14 +186,10 @@ void muestraCuadroSubirBajar(){
 
 void creaEscena()
 {
-	demuestraModelo();
-	//pruebaPoses();
-	//demuestraMateriales();
-	//nombre, profundidad en x, y y z, pos en "x", "y" y"z"
-	//plano("plataforma",40.0,0.01,40.0, 0.0, -0.005, 0.0);
 
-	//demuestraPared();
-	//referencias();
+	muestraCastillo();
+	muestraSombrero();
+
 	muestraProtagonista();
 	//cuboParaElClic();
 	muestraCuadroSubirBajar();
