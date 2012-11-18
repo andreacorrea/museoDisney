@@ -8,5 +8,6 @@ void defineLuces();
 void creaEscena();
 
 //Ejemplos particulares
-void demuestraModelo();
+void muestraCastillo();
 void demuestraMateriales();
+void muestraSombrero();

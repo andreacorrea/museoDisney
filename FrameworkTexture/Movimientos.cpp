@@ -8,24 +8,7 @@ bool collision(GLfloat rotY){
     map <string, Objeto *>::iterator it1;
     map <string, Objeto *>::iterator it;
     //buscar avatar y guardar la localidad donde se encuentra en el map
-    it1 = escena->objetos.find("cuboAvatar");
-    //
-    /*    
-    //por cada objeto declarado en la clase
-    for ( it=escena->objetos.begin() ; it != escena->objetos.end(); it++){
-        //buscar solo el objeto que tenga el nombre de pared
-        if(it->first == "pared"){
-            
-            if((it->second->posZ + 2.5) >=  (it1->second->posZ -.25)){
-                cout<<"se esta pasando!!!"<<endl;
-                return true;
-            }
-            
-        }
-    }*/
-
-	/*
-    int angulo;
+	int angulo;
     angulo = ((int)rotY) %360;
     if(rotY < 0){
         angulo = abs(angulo);
@@ -33,32 +16,70 @@ bool collision(GLfloat rotY){
         //printf("angulo negativo %i\n", angulo);
 
     }
-    //it1->second->posX > -1.7 && it1->second->posX < 1.7 && 
-    if( it1->second->posZ > -2.70 && it1->second->posX > -1.75 && it1->second->posZ < 0.85 && it1->second->posX < 1.8){
-        //printf("Aqui golpea %i\n",angulo);
-        printf("estas adentro\n");
-        // pared de fondo
-        if(it1->second->posZ < -2.6 && (angulo < 90  || angulo > 270)){
-            
-            return true;
-        }
-        // pared izquierda
-        if(it1->second->posX < -1.7 && angulo <180 && angulo>0 ){
-            return true;
-        }
-        // pared derecha
-        if(it1->second->posX > 1.7 && angulo >180 && angulo<360 ){
-            return true;
-        }
 
-        // pared de frente
-        if(it1->second->posZ < -2.6 && (angulo < 90  || angulo > 270)){
-            printf("Aqui golpea %i\n",angulo);
-            return true;
+    it1 = escena->objetos.find("cuboAvatar");
+    //
+       
+    //por cada objeto declarado en la clase
+	cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
+    for ( it=escena->objetos.begin() ; it != escena->objetos.end(); it++){
+        //buscar solo el objeto que tenga el nombre de pared
+        if(it->first == "sombrero"){
+            //objeto frente
+            if((it->second->posZ + 1.9) > it1->second->posZ &&  (it->second->posZ) < it1->second->posZ &&  (angulo<90 || angulo > 270) && (it1->second->posX > it->second->posX - 1.9 ) && (it1->second->posX < it->second->posX + 1.9 )){
+                cout<<"Col Frente!!!"<<endl;
+                return true;
+            }
+			//objeto derecho
+			if((it->second->posX + 1.9) > it1->second->posX &&  (it->second->posX) < it1->second->posX &&  (angulo < 180) && (it1->second->posZ > it->second->posZ - 1.9 ) && (it1->second->posZ < it->second->posZ + 1.9 )){
+                cout<<"Col Der!!!"<<endl;
+                return true;
+            }
+			// objeto izquierdo
+			if((it->second->posX - 1.91) < it1->second->posX &&  (it->second->posX) > it1->second->posX &&  (angulo > 180) && (it1->second->posZ > it->second->posZ - 1.9 ) && (it1->second->posZ < it->second->posZ + 1.9 )){
+                cout<<"Col Izq!!!"<<endl;
+                return true;
+            }
+
+			 //objeto frente
+            if((it->second->posZ - 1.9) < it1->second->posZ &&  (it->second->posZ) > it1->second->posZ &&  (angulo>90 && angulo < 270) && (it1->second->posX > it->second->posX - 1.9 ) && (it1->second->posX < it->second->posX + 1.9 )){
+                cout<<"Col Atras!!!"<<endl;
+                return true;
+            }
+            
         }
     }
 
-        cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;*/
+	
+
+
+	//Pared interna de fondo
+	if(it1->second->posZ < PARED_FONDO && it1->second->posZ > (PARED_FONDO-1) && (angulo<90 || angulo > 270) && (it1->second->posX>PARED_IZQUIERDA && it1->second->posX<PARED_DERECHA)){
+		return true;
+	}
+	//Pared derecha
+	if(it1->second->posX > PARED_DERECHA && it1->second->posX < (PARED_DERECHA+1) && (angulo > 180) && (it1->second->posZ>PARED_FONDO && it1->second->posZ<PARED_NORTE)){
+		return true;
+	}
+	// Pared Izquierda
+	if(it1->second->posX < PARED_IZQUIERDA && it1->second->posX > (PARED_IZQUIERDA-1) && (angulo < 180 ) && (it1->second->posZ>PARED_FONDO && it1->second->posZ<PARED_NORTE)){
+		return true;
+	}
+
+	//Pared interna norte izquierda
+	if(it1->second->posZ > PARED_NORTE && it1->second->posZ < (PARED_NORTE+1) && (angulo>90 && angulo < 270) && (it1->second->posX>PARED_IZQUIERDA && it1->second->posX<PARED_NORTE_IZQUIERDA)){
+		cout << "PARED->Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
+		return true;
+	}
+
+	//Pared interna norte derecha
+	if(it1->second->posZ > PARED_NORTE && it1->second->posZ < (PARED_NORTE+1) && (angulo>90 && angulo < 270) && (it1->second->posX>PARED_NORTE_DERECHA && it1->second->posX<PARED_DERECHA)){
+		cout << "PARED->Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
+		return true;
+	}
+
+
+        cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
     return false;
 
 }

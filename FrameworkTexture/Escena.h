@@ -24,6 +24,14 @@
 #define WIN_WIDTH  1024
 #define WIN_HEIGHT 640
 
+#define PARED_FONDO -10
+#define PARED_NORTE_DERECHA 3
+#define PARED_DERECHA 7
+#define PARED_NORTE_IZQUIERDA -3
+#define PARED_IZQUIERDA -8
+#define PARED_NORTE 0
+
+
 // Filtro por default para carga de texturas
 #define TEX_FILTER  GL_LINEAR_MIPMAP_LINEAR
 
