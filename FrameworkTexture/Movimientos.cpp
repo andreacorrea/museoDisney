@@ -95,8 +95,8 @@ void moverAdelante(){
 			Objeto *aux=escena->objetos["cuboAvatar"];
 		if(!collision(aux->rotY-180)){
 			double rotYRad= degToRad(aux->rotY-180);
-			aux->posZ-= dtran * (cos(rotYRad));
-			aux->posX-=  dtran * (sin(rotYRad));
+			aux->posZ-= dtran*5 * (cos(rotYRad));
+			aux->posX-=  dtran*5 * (sin(rotYRad));
 			camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY-180));
 			camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY-180));
 		
@@ -135,7 +135,7 @@ void girarDerecha(){
 
 void moverArriba(){
 	if(camaraVistaExterior->xrot< MAX_XROT_CAMARA_EXTERIOR){
-		camaraVistaExterior->xrot+=dtran;
+		camaraVistaExterior->xrot+=drot;
 		redimensiona(currWidth, currHeight);
 	}
 	
@@ -143,28 +143,7 @@ void moverArriba(){
 
 void moverAbajo(){
 	if(camaraVistaExterior->xrot>MIN_XROT_CAMARA_EXTERIOR){
-		camaraVistaExterior->xrot-=dtran;
-		redimensiona(currWidth, currHeight);
-	}
-}
-
-void acercar(){
-	if(camaraVistaExterior->xrot < MAX_XROT_ACERCAMIENTO ){
-		if(camaraVistaExterior->zview < MAX_ZVIEW_ACERCAMIENTO_AL_PUENTE){
-			camaraVistaExterior->zview+=dtran;
-			redimensiona(currWidth, currHeight);
-		}
-	}else{
-		if(camaraVistaExterior->zview<MAX_ZVIEW_ACERCAMIENTO_AL_CASTILLO){
-			camaraVistaExterior->zview+=dtran;
-			redimensiona(currWidth, currHeight);
-		}
-	}
-}
-
-void alejar(){
-	if(camaraVistaExterior->zview > MAX_ZVIEW_ALEJAMIENTO_CAMARA_EXTERIOR){
-		camaraVistaExterior->zview-=dtran;
+		camaraVistaExterior->xrot-=drot;
 		redimensiona(currWidth, currHeight);
 	}
 }

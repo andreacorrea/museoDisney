@@ -135,22 +135,50 @@ void referencias(){
 	escena->objetos["z+"]->posZ=3;
 }
 
-void pruebaPoses(){
-	//escena->agregaObjeto("poses",(Objeto *) new Poses("pose%d",5,3));
+void muestraCuadro(string nombreCuadro, string nombreTextura, GLfloat ancho, GLfloat alto, GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat rotY){
+	escena->agregaObjeto(nombreCuadro, (Objeto *) new AlphaQuad(escena, nombreTextura, GL_REPEAT, 1.0, ancho, alto, 0.0, 0.0, 1.0, 0, 0.00));
+	escena->objetos[nombreCuadro]->posX=posX;
+	escena->objetos[nombreCuadro]->posY=posY;
+	escena->objetos[nombreCuadro]->posZ=posZ;
+	escena->objetos[nombreCuadro]->rotY=rotY;
+}
+
+void muestraCuadros(){
+	GLfloat ancho=2.5;
+	GLfloat alto=4.0;
+	GLfloat primerPisoPosY=2;
+	GLfloat segundopisoPosY=7;
+	GLfloat paredIzqX = -8.275;
+	GLfloat paredDerX = 7.625;
+	GLfloat paredFondoZ = -11.0;
+	GLfloat paredPuertaZ = -0.7;
+	//Cuadros primer piso
+	muestraCuadro("CuadroBlancanieves", "agua.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90);
+	muestraCuadro("CuadroAprendizBrujo", "moho.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0);
+	muestraCuadro("CuadroBellaYBestia", "stone.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0);
+	muestraCuadro("CuadroPinocho", "chrome.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90);
+	muestraCuadro("CuadroAladdin", "bumpy.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90);
+	
+
+	//Cuadros segundo piso
+	
+	muestraCuadro("CuadroToyStory", "moho.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0);
+	muestraCuadro("CuadroIncreibles", "stone.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0);
+	muestraCuadro("CuadroNemo", "bumpy.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90);
+	muestraCuadro("CuadroUp", "chrome.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90);
+	muestraCuadro("CuadroWallE", "hoja.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0);
+	muestraCuadro("CuadroMonstersInc", "agua.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0);
+
 }
 
 void creaEscena()
 {
-	muestraCastillo();
-	pruebaPoses();
-	muestraSombrero();
-	//demuestraMateriales();
-	//nombre, profundidad en x, y y z, pos en "x", "y" y"z"
-	//plano("plataforma",40.0,0.01,40.0, 0.0, -0.005, 0.0);
 
-	//demuestraPared();
-	//referencias();
+	muestraCastillo();
+	muestraSombrero();
+
 	muestraProtagonista();
 	cuboParaElClic();
+	muestraCuadros();
 }
 

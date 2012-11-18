@@ -11,15 +11,15 @@ void keyboard(unsigned char key,int x,int y)
 		switch(key){
 							  
 			case '+': 
-				if(activa == camaraVistaExterior){
+				/*if(activa == camaraVistaExterior){
 					acercar();
-				}
+				}*/
 				break;
 
 			case '-': 
-				if(activa == camaraVistaExterior){
+				/*if(activa == camaraVistaExterior){
 					alejar();
-				}
+				}*/
 				break;
 
 			case 'x':
@@ -53,7 +53,7 @@ void keyboard(unsigned char key,int x,int y)
 				break;
 
 			case 'w':
-				if(activa==camaraPrimeraPersona || activa == camaraZenital){
+				if(activa==camaraPrimeraPersona || activa == camaraSeguridad1 || activa == camaraSeguridad2 || activa == camaraZenital){
 					moverAdelante();
 				}else if(activa ==camaraVistaExterior){
 					moverArriba();
@@ -68,7 +68,7 @@ void keyboard(unsigned char key,int x,int y)
 				break;
 
 			case 'a':
-				if(activa == camaraPrimeraPersona || activa == camaraZenital ){
+				if(activa==camaraPrimeraPersona || activa == camaraSeguridad1 || activa == camaraSeguridad2 || activa == camaraZenital){
 					girarIzquierda();
 				}else if(activa == camaraVistaExterior){
 					exploraPorIzquierda();
@@ -77,7 +77,7 @@ void keyboard(unsigned char key,int x,int y)
 				break;
 
 			case 'd':
-				if(activa == camaraPrimeraPersona || activa == camaraZenital ){
+				if(activa==camaraPrimeraPersona || activa == camaraSeguridad1 || activa == camaraSeguridad2 || activa == camaraZenital){
 					girarDerecha();
 				}else if(activa == camaraVistaExterior){
 					exploraPorDerecha();
