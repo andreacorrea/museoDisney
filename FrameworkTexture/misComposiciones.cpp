@@ -128,13 +128,27 @@ void referencias(){
 	escena->objetos["z+"]->posZ=3;
 }
 
-void muestraCuadro(string nombreCuadro, string nombreTextura, GLfloat ancho, GLfloat alto, GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat rotY, GLfloat rotX){
-	escena->agregaObjeto(nombreCuadro, (Objeto *) new AlphaQuad(escena, nombreTextura, GL_REPEAT, 1.0, ancho, alto, 0.0, 0.0, 1.0, 0, 0.00));
-	escena->objetos[nombreCuadro]->posX=posX;
-	escena->objetos[nombreCuadro]->posY=posY;
-	escena->objetos[nombreCuadro]->posZ=posZ;
-	escena->objetos[nombreCuadro]->rotY=rotY;
-	escena->objetos[nombreCuadro]->rotX=rotX;
+void posicionarQuad(string nombreQuad, GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat rotX, GLfloat rotY, GLfloat velS, GLfloat velT, GLfloat texEscala){
+	escena->objetos[nombreQuad]->posX=posX;
+	escena->objetos[nombreQuad]->posY=posY;
+	escena->objetos[nombreQuad]->posZ=posZ;
+	escena->objetos[nombreQuad]->rotY=rotY;
+	escena->objetos[nombreQuad]->rotX=rotX;
+	((AlphaQuad *)escena->objetos[nombreQuad])->texVelS=velS;
+	((AlphaQuad *)escena->objetos[nombreQuad])->texVelT=velT;
+	((AlphaQuad *)escena->objetos[nombreQuad])->texEscala = texEscala;
+}
+
+void muestraQuad(string nombreQuad, string nombreTextura, GLfloat ancho, GLfloat alto, GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat rotY, GLfloat rotX){
+	escena->agregaObjeto(nombreQuad, (Objeto *) new AlphaQuad(escena, nombreTextura, GL_REPEAT, 1.0, ancho, alto, 0.0, 0.0, 1.0, 0, 0.00));
+	posicionarQuad(nombreQuad, posX, posY, posZ, rotX, rotY, 0, 0, 1);
+	
+}
+
+void muestraQuad(string nombreQuad, string nombreTextura, GLfloat ancho, GLfloat alto, GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat rotY, GLfloat rotX, GLfloat velS, GLfloat velT, GLfloat texEscala){
+	escena->agregaObjeto(nombreQuad, (Objeto *) new AlphaQuad(escena, nombreTextura, GL_REPEAT, 1.0, ancho, alto, 0.0, 0.0, 1.0, 0, 0.00));
+	posicionarQuad(nombreQuad, posX, posY, posZ, rotX, rotY, velS, velT, texEscala);
+	
 }
 
 void muestraCuadros(){
@@ -147,27 +161,27 @@ void muestraCuadros(){
 	GLfloat paredFondoZ = -11.0;
 	GLfloat paredPuertaZ = -0.7;
 	//Cuadros primer piso
-	muestraCuadro("CuadroBlancanieves", "agua.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
-	muestraCuadro("CuadroAprendizBrujo", "moho.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
-	muestraCuadro("CuadroBellaYBestia", "stone.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
-	muestraCuadro("CuadroPinocho", "chrome.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
-	muestraCuadro("CuadroAladdin", "bumpy.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
+	muestraQuad("CuadroBlancanieves", "agua.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
+	muestraQuad("CuadroAprendizBrujo", "moho.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroBellaYBestia", "stone.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroPinocho", "chrome.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
+	muestraQuad("CuadroAladdin", "bumpy.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
 	
 
 	//Cuadros segundo piso
 	
-	muestraCuadro("CuadroToyStory", "moho.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0, 0);
-	muestraCuadro("CuadroIncreibles", "stone.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0, 0);
-	muestraCuadro("CuadroNemo", "bumpy.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
-	muestraCuadro("CuadroUp", "chrome.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
-	muestraCuadro("CuadroWallE", "hoja.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0, 0);
-	muestraCuadro("CuadroMonstersInc", "agua.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
+	muestraQuad("CuadroToyStory", "moho.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroIncreibles", "stone.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroNemo", "bumpy.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
+	muestraQuad("CuadroUp", "chrome.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
+	muestraQuad("CuadroWallE", "hoja.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0, 0);
+	muestraQuad("CuadroMonstersInc", "agua.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
 
 }
 
 void muestraCuadroSubirBajar(){
-	muestraCuadro("cuadroSubir", "agua.tga", 1.5, 1.5, -7, FLOOR_1_Y, -7, 0, 90);
-	muestraCuadro("cuadroBajar", "bumpy.tga", 1.5, 1.5, -5, FLOOR_2_Y, -10, 0, 90);
+	muestraQuad("cuadroSubir", "agua.tga", 1.5, 1.5, -7, FLOOR_1_Y, -7, 0, 90);
+	muestraQuad("cuadroBajar", "bumpy.tga", 1.5, 1.5, -5, FLOOR_2_Y, -10, 0, 90);
 	//muestraCuadro("cuadroBajar", "agua.tga", 5, 5, 0, 0, 0, 0, 90);
 	//escena->objetos["cuadroSubir"]->anulaMaterial();
 	//muestraCuadro("cuadroSubir", "bumpy.tga", 1.5, 1.5, -6, -0.725, -3, 0, 90);
@@ -176,6 +190,13 @@ void muestraCuadroSubirBajar(){
 										 0.0,0.0,0.0,
 										 0.0,0.0,0.0,
 										 "bumpy.tga",GL_CLAMP,0.5,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,false);*/
+}
+
+void muestraRio(){
+	muestraQuad("rio1", "agua.tga", 32, 10, 0, -0.725, 7, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio2", "agua.tga", 6, 20, -13, -0.725, -4.5, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio3", "agua.tga", 32, 7.5, 0, -0.725, -16.25, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio4", "agua.tga", 6.5, 20, 12.75, -0.725, -4.5, 0, 90, 0.005, 0.005, 0.25);
 }
 
 void creaEscena()
@@ -188,5 +209,6 @@ void creaEscena()
 	cuboParaElClic();
 	muestraCuadroSubirBajar();
 	muestraCuadros();
+	muestraRio();
 }
 
