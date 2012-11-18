@@ -121,6 +121,7 @@ class Objeto
 	GLuint mappingMode;
 	_GLMmaterial material;
 	map <string, Objeto *> descendientes;
+	GLuint hitName;
 
 	Objeto();
     ~Objeto();
@@ -259,7 +260,8 @@ class Escena
         GLfloat inicioNiebla;
 		GLfloat finNiebla;
         GLfloat colorNiebla[4];
-		
+		GLuint currHitName;
+
 		Escena();
 		~Escena();
 		void agregaObjeto(string nombre,Objeto *nuevoObjeto);		

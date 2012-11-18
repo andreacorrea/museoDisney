@@ -535,6 +535,7 @@ Escena::Escena()
 {
   currentFrame=0;
   muestraLuces=false;
+  currHitName = 0;
   char nombre[MAX_NOMBRE];
   for (int i=0; i<MAX_LUCES; i++) 
   {
@@ -586,18 +587,23 @@ void Escena::agregaObjeto(string nombre,Objeto *nuevoObjeto)
 {
 	objetos[nombre]=nuevoObjeto;	
 	objetos[nombre]->escenaActual=this;
+	currHitName++;
+	objetos[nombre]->hitName=currHitName;
+	
 }
 
 
 void Escena::dibujaEscena()
 {
-   map<string, Objeto *>::const_iterator iter;   
-   for (iter=objetos.begin(); iter != objetos.end(); ++iter) 
-   {
-	   Objeto *o=(Objeto *)iter->second;
-	   o->dibuja();	  	   
-   } 
+	glPushName(0);
+	map<string, Objeto *>::const_iterator iter;   
+	for (iter=objetos.begin(); iter != objetos.end(); ++iter){
+		Objeto *o=(Objeto *)iter->second;
+		glLoadName(o->hitName);
+		o->dibuja();	  	   
+	}
 }
+
 
 
 void Escena::cuentaframe()

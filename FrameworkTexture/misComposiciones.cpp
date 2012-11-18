@@ -191,7 +191,7 @@ void creaEscena()
 	muestraSombrero();
 
 	muestraProtagonista();
-	//cuboParaElClic();
+	cuboParaElClic();
 	muestraCuadroSubirBajar();
 	//muestraCuadros();
 }
