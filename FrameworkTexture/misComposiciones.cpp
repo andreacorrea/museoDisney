@@ -21,7 +21,7 @@ void muestraCastillo()
 	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillotexturas"));
   escena->objetos["castillo"]->escalaUniforme(20.0);
   escena->objetos["castillo"]->rotY=-90;
-	escena->objetos["castillo"]->posY=14.6;
+	escena->objetos["castillo"]->posY=17.5;
 }
 
 
@@ -35,7 +35,7 @@ void muestraSkydome()
 										 1.0,1.0,1.0,
 										 0.0,0.0,0.0,
 										 0.0,0.0,0.0,
-										 "sky1.tga",GL_REPEAT,0.5,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
+										 "sky1.tga",GL_REPEAT,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
 }
 
 
@@ -100,7 +100,7 @@ void demuestraMateriales()
 //Autor: Alonso Rodriguez
 //cuboIrregular(nombre del objeto, tamanio en X, tamanio en Y, tamanio en Z, pos en X, pos en Y, pos en Z)
 void plano(char *nombre, GLfloat sizeX,GLfloat sizeY,GLfloat sizeZ, GLfloat pX, GLfloat pY, GLfloat pZ){
-		escena->agregaObjeto(nombre, (Objeto *) new Cubo(1,0.0,1.0,0.0));
+		escena->agregaObjeto(nombre, (Objeto *) new Cubo(1,0.326,1.0,0.019)); //70,159,5
 		escena->objetos [nombre]->posX=pX;
 		escena->objetos [nombre]->posZ=pZ;
 		escena->objetos [nombre]->posY=pY;
@@ -215,14 +215,18 @@ void muestraCuadroSubirBajar(){
 }
 
 void muestraRio(){
-	muestraQuad("rio1", "agua.tga", 32, 10, 0, -0.725, 7, 0, 90, 0.005, 0.005, 0.25);
-	muestraQuad("rio2", "agua.tga", 6, 20, -13, -0.725, -4.5, 0, 90, 0.005, 0.005, 0.25);
-	muestraQuad("rio3", "agua.tga", 32, 7.5, 0, -0.725, -16.25, 0, 90, 0.005, 0.005, 0.25);
-	muestraQuad("rio4", "agua.tga", 6.5, 20, 12.75, -0.725, -4.5, 0, 90, 0.005, 0.005, 0.25);
+	/*
+	muestraQuad("rio1", "agua.tga", 32, 11.5, 0, -0.55, 7.47, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio2", "agua.tga", 6.475, 14.5, -12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio3", "agua.tga", 32, 8, 0, -0.5, -16.25, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio4", "agua.tga", 6.475, 14.5, 12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);*/
+	//o
+	muestraQuad("rio1", "agua.tga", 40, 40, 0, -0.55, -6.8, 0, 90, 0.005, 0.005, 0.25);
 }
 
 void creaEscena()
 {
+	plano("plano", 200,1,200,0,-1.06,0);
 	muestraSkydome();
 	muestraCastillo();
 	muestraSombrero();

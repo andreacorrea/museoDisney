@@ -79,9 +79,6 @@ bool collision(GLfloat rotY){
         }
     }
 
-	
-
-
 	//Pared interna de fondo
 	if(it1->second->posZ < PARED_FONDO && it1->second->posZ > (PARED_FONDO-1) && (angulo<90 || angulo > 270) && (it1->second->posX>PARED_IZQUIERDA && it1->second->posX<PARED_DERECHA)){
 		return true;
@@ -107,8 +104,6 @@ bool collision(GLfloat rotY){
 		return true;
 	}
 
-
-        //cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
     return false;
 
 }
