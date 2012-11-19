@@ -60,23 +60,19 @@ bool collision(GLfloat rotY){
         if(it->first == "sombrero"){
             //objeto frente
             if((it->second->posZ + 1.9) > it1->second->posZ &&  (it->second->posZ) < it1->second->posZ &&  (angulo<90 || angulo > 270) && (it1->second->posX > it->second->posX - 1.9 ) && (it1->second->posX < it->second->posX + 1.9 )){
-                cout<<"Col Frente!!!"<<endl;
                 return true;
             }
 			//objeto derecho
 			if((it->second->posX + 1.9) > it1->second->posX &&  (it->second->posX) < it1->second->posX &&  (angulo < 180) && (it1->second->posZ > it->second->posZ - 1.9 ) && (it1->second->posZ < it->second->posZ + 1.9 )){
-                cout<<"Col Der!!!"<<endl;
-                return true;
+				return true;
             }
 			// objeto izquierdo
-			if((it->second->posX - 1.91) < it1->second->posX &&  (it->second->posX) > it1->second->posX &&  (angulo > 180) && (it1->second->posZ > it->second->posZ - 1.9 ) && (it1->second->posZ < it->second->posZ + 1.9 )){
-                cout<<"Col Izq!!!"<<endl;
+			if((it->second->posX - 1.9) < it1->second->posX &&  (it->second->posX) > it1->second->posX &&  (angulo > 180) && (it1->second->posZ > it->second->posZ - 1.9 ) && (it1->second->posZ < it->second->posZ + 1.9 )){
                 return true;
             }
 
 			 //objeto frente
             if((it->second->posZ - 1.9) < it1->second->posZ &&  (it->second->posZ) > it1->second->posZ &&  (angulo>90 && angulo < 270) && (it1->second->posX > it->second->posX - 1.9 ) && (it1->second->posX < it->second->posX + 1.9 )){
-                cout<<"Col Atras!!!"<<endl;
                 return true;
             }
             
@@ -118,6 +114,7 @@ bool collision(GLfloat rotY){
 }
 
 //hacia la camara es positivo
+//hacia la camara es positivo
 void moverAdelante(){
 
 	Objeto *aux=escena->objetos["protagonista"];
@@ -135,6 +132,8 @@ void moverAdelante(){
 	}
 	
 }
+
+
 
 void girarIzquierda(){
 	Objeto *aux=escena->objetos["protagonista"];

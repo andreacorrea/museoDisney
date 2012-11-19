@@ -17,11 +17,27 @@ void defineLuces()
 
 void muestraCastillo()
 {
-  escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
+  //escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
+	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillotexturas"));
   escena->objetos["castillo"]->escalaUniforme(20.0);
   escena->objetos["castillo"]->rotY=-90;
 	escena->objetos["castillo"]->posY=14.6;
 }
+
+
+void muestraSkydome()
+{ 
+
+    //Esfera que sirve como Sky Dome. IMPORTANTE: lighting, el ultimo parametro de defineMaterial, es false 
+    escena->agregaObjeto("skydome",(Objeto *) new Esfera(80.0,30,30,1.0,1.0,1.0));
+    escena->objetos["skydome"]->velRotX=0.1;
+	escena->objetos["skydome"]->defineMaterial(1.0,1.0,1.0,
+										 1.0,1.0,1.0,
+										 0.0,0.0,0.0,
+										 0.0,0.0,0.0,
+										 "sky1.tga",GL_REPEAT,0.5,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
+}
+
 
 void muestraSombrero()
 {
@@ -29,6 +45,12 @@ void muestraSombrero()
   escena->objetos["sombrero"]->escalaUniforme(1.9);
   escena->objetos["sombrero"]->posY=1.15;
   escena->objetos["sombrero"]->posZ=-5.0;
+  escena->modificaMaterial("sombrero", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 1.0);
+  /*escena->objetos["sombrero"]->defineMaterial(1.0,1.0,1.0,
+  									 1.0,1.0,1.0,
+  									 0.0,0.0,0.0,
+  									 0.0,0.0,0.0,
+  									 "sombrero.tga",GL_REPEAT,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);*/
 }
 
 void demuestraMateriales()
@@ -161,27 +183,27 @@ void muestraCuadros(){
 	GLfloat paredFondoZ = -11.0;
 	GLfloat paredPuertaZ = -0.7;
 	//Cuadros primer piso
-	muestraQuad("CuadroBlancanieves", "agua.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
-	muestraQuad("CuadroAprendizBrujo", "moho.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
-	muestraQuad("CuadroBellaYBestia", "stone.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
-	muestraQuad("CuadroPinocho", "chrome.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
-	muestraQuad("CuadroAladdin", "bumpy.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
+	muestraQuad("CuadroBlancanieves", "cuadros/CuadroBlancanieves.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
+	muestraQuad("CuadroAprendizBrujo", "cuadros/CuadroAprendizBrujo.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroBellaYBestia", "cuadros/CuadroCuadroBellaYBestia.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroPinocho", "cuadros/CuadroPinocho.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
+	muestraQuad("CuadroAladdin", "cuadros/CuadroAladdin.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
 	
 
 	//Cuadros segundo piso
 	
-	muestraQuad("CuadroToyStory", "moho.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0, 0);
-	muestraQuad("CuadroIncreibles", "stone.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0, 0);
-	muestraQuad("CuadroNemo", "bumpy.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
-	muestraQuad("CuadroUp", "chrome.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
-	muestraQuad("CuadroWallE", "hoja.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0, 0);
-	muestraQuad("CuadroMonstersInc", "agua.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
+	muestraQuad("CuadroToyStory", "cuadros/CuadroToyStory.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroIncreibles", "cuadros/CuadroIncreibles.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("CuadroNemo", "cuadros/CuadroNemo.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
+	muestraQuad("CuadroUp", "cuadros/CuadroUp.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
+	muestraQuad("CuadroWallE", "cuadros/CuadroWallE.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0, 0);
+	muestraQuad("CuadroMonstersInc", "cuadros/CuadroMonstersInc.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
 
 }
 
 void muestraCuadroSubirBajar(){
-	muestraQuad("cuadroSubir", "agua.tga", 1.5, 1.5, -7, FLOOR_1_Y, -7, 0, 90);
-	muestraQuad("cuadroBajar", "bumpy.tga", 1.5, 1.5, -5, FLOOR_2_Y, -10, 0, 90);
+	muestraQuad("cuadroSubir", "subir.tga", 1.5, 1.5, -7, FLOOR_1_Y, -7, 0, 90);
+	muestraQuad("cuadroBajar", "bajar.tga", 1.5, 1.5, -5, FLOOR_2_Y, -10, 0, 90);
 	//muestraCuadro("cuadroBajar", "agua.tga", 5, 5, 0, 0, 0, 0, 90);
 	//escena->objetos["cuadroSubir"]->anulaMaterial();
 	//muestraCuadro("cuadroSubir", "bumpy.tga", 1.5, 1.5, -6, -0.725, -3, 0, 90);
@@ -201,7 +223,7 @@ void muestraRio(){
 
 void creaEscena()
 {
-
+	muestraSkydome();
 	muestraCastillo();
 	muestraSombrero();
 
