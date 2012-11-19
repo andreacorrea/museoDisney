@@ -17,7 +17,8 @@ void defineLuces()
 
 void muestraCastillo()
 {
-  escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
+  //escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
+	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillotexturas"));
   escena->objetos["castillo"]->escalaUniforme(20.0);
   escena->objetos["castillo"]->rotY=-90;
 	escena->objetos["castillo"]->posY=14.6;
@@ -201,8 +202,8 @@ void muestraCuadros(){
 }
 
 void muestraCuadroSubirBajar(){
-	muestraQuad("cuadroSubir", "agua.tga", 1.5, 1.5, -7, FLOOR_1_Y, -7, 0, 90);
-	muestraQuad("cuadroBajar", "bumpy.tga", 1.5, 1.5, -5, FLOOR_2_Y, -10, 0, 90);
+	muestraQuad("cuadroSubir", "subir.tga", 1.5, 1.5, -7, FLOOR_1_Y, -7, 0, 90);
+	muestraQuad("cuadroBajar", "bajar.tga", 1.5, 1.5, -5, FLOOR_2_Y, -10, 0, 90);
 	//muestraCuadro("cuadroBajar", "agua.tga", 5, 5, 0, 0, 0, 0, 90);
 	//escena->objetos["cuadroSubir"]->anulaMaterial();
 	//muestraCuadro("cuadroSubir", "bumpy.tga", 1.5, 1.5, -6, -0.725, -3, 0, 90);

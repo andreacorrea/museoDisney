@@ -114,19 +114,26 @@ bool collision(GLfloat rotY){
 }
 
 //hacia la camara es positivo
+//hacia la camara es positivo
 void moverAdelante(){
 
-	Objeto *aux=escena->objetos["cuboAvatar"];
-	if(!collision(aux->rotY-180)){
-		double rotYRad= degToRad(aux->rotY-180);
-		aux->posZ-= dtran*5 * (cos(rotYRad));
-		aux->posX-=  dtran*5 * (sin(rotYRad));
-		camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY-180));
-		camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY-180));
-		redimensiona(currWidth,currHeight);
+	Objeto *aux=escena->objetos["protagonista"];
+	if(!checarSubirBajar()){
+		if(!collision(aux->rotY-180)){
+			double rotYRad= degToRad(aux->rotY-180);
+			aux->posZ-= dtran*5 * (cos(rotYRad));
+			aux->posX-=  dtran*5 * (sin(rotYRad));
+			camaraPrimeraPersona->xview=aux->posX+sin(degToRad(aux->rotY-180));
+			camaraPrimeraPersona->zview=aux->posZ+cos(degToRad(aux->rotY-180));
+			redimensiona(currWidth,currHeight);	
+		}
+	}else{
+		redimensiona(currWidth,currHeight);	
 	}
 	
 }
+
+
 
 void girarIzquierda(){
 	Objeto *aux=escena->objetos["protagonista"];
