@@ -2,7 +2,41 @@
 #include "misInteracciones.h"
 #include "iostream"
 
-//solo verifica que exista colision con el objeto cuboAvatar
+int pisoAvatar =1;
+
+
+double degToRad(double deg){
+	return deg*M_PI/180;
+}
+
+//verific la posicion del avatar en X y Z para determinar si sube o baja las escaleras
+bool checarSubirBajar(){
+	Objeto *prot=escena->objetos["protagonista"];
+	if(pisoAvatar == 1 && prot->posX > MIN_ELEVATOR && prot->posX < MAX_ELEVATOR && prot->posZ > MIN_ELEVATOR && prot->posZ < MAX_ELEVATOR ){
+		prot->rotY=45;
+		prot->posY = 6;
+		prot->posX = -5.5;
+		camaraPrimeraPersona->xview=prot->posX+sin(degToRad(prot->rotY-180));
+		camaraPrimeraPersona->zview=prot->posZ+cos(degToRad(prot->rotY-180));
+		camaraPrimeraPersona->yview=7;
+		pisoAvatar=2;
+		return true;
+	}else if(pisoAvatar == 2 && prot->posX > MIN_ELEVATOR+2 && prot->posX < MAX_ELEVATOR+2 && prot->posZ > MIN_ELEVATOR-3 && prot->posZ < MAX_ELEVATOR-3 ){
+		prot->rotY=45;
+		prot->posY = 0.25;
+		prot->posX = -5;
+		prot->posZ += 2.5;
+		camaraPrimeraPersona->xview=prot->posX+sin(degToRad(prot->rotY-180));
+		camaraPrimeraPersona->zview=prot->posZ+cos(degToRad(prot->rotY-180));
+		camaraPrimeraPersona->yview=1;
+		pisoAvatar=1;
+		return true;
+	}else{
+		return false;
+	}
+}
+
+//solo verifica que exista colision con el objeto protagonista
 bool collision(GLfloat rotY){
     map <string, Objeto *>::iterator it1;
     map <string, Objeto *>::iterator it;
@@ -16,7 +50,7 @@ bool collision(GLfloat rotY){
 
     }
 
-    it1 = escena->objetos.find("cuboAvatar");
+    it1 = escena->objetos.find("protagonista");
     //
        
     //por cada objeto declarado en la clase
@@ -74,14 +108,9 @@ bool collision(GLfloat rotY){
 	}
 
 
-        cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
+        //cout << "Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
     return false;
 
-}
-
-
-double degToRad(double deg){
-	return deg*M_PI/180;
 }
 
 //hacia la camara es positivo
@@ -100,7 +129,7 @@ void moverAdelante(){
 }
 
 void girarIzquierda(){
-	Objeto *aux=escena->objetos["cuboAvatar"];
+	Objeto *aux=escena->objetos["protagonista"];
 	//rota al avatar hacia izquierda
 	aux->rotY+=MOUSE_MUL_RY * drot;
 
@@ -115,7 +144,7 @@ void girarIzquierda(){
 }
 
 void girarDerecha(){
-	Objeto *aux=escena->objetos["cuboAvatar"];
+	Objeto *aux=escena->objetos["protagonista"];
 	//rota al avatar hacia derecha	
 	aux->rotY-=MOUSE_MUL_RY * drot;
 	//traslada camara

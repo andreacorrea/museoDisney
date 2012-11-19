@@ -8,6 +8,7 @@
 extern Escena *escena;       //Escena actual
 extern int currWidth;        //Ancho de la ventana grafica
 extern int currHeight;       //Alto de la ventana grafica
+extern int pisoAvatar;		//Determina el piso en el que se encuentra el avatar
 extern GLfloat dtran;        //Delta de traslacion interactiva
 extern GLfloat drot;         //Delta de rotacion interactiva
 extern Camara *activa;       //Camara activa
