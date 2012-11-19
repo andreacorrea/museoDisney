@@ -64,7 +64,13 @@
 #define MAX_XROT_CAMARA_EXTERIOR 50
 #define MIN_XROT_CAMARA_EXTERIOR 0
 
+//default dimensions of elevators of XZ
+#define MIN_ELEVATOR -7.75
+#define MAX_ELEVATOR -6.25
 
+//altura default de cada piso
+#define FLOOR_1_Y -0.725
+#define FLOOR_2_Y 5.15
 
 // Estructura del encabezado del archivo de textura TGA
 #pragma pack(1)

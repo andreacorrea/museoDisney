@@ -69,7 +69,7 @@ void redimensiona(int width,int height) {
 	  glRotatef(activa->zrot,0.0,0.0,1.0);
 	  glViewport(0,0,width,height);
   }else{
-	  gluLookAt(camaraPrimeraPersona->xview, camaraPrimeraPersona->yview, camaraPrimeraPersona->zview, escena->objetos["cuboAvatar"]->posX, camaraPrimeraPersona->yview, escena->objetos["cuboAvatar"]->posZ, 0, 1, 0);
+	  gluLookAt(camaraPrimeraPersona->xview, camaraPrimeraPersona->yview, camaraPrimeraPersona->zview, escena->objetos["protagonista"]->posX, camaraPrimeraPersona->yview, escena->objetos["protagonista"]->posZ, 0, 1, 0);
 	  glViewport(0,0,width,height);
   }
   
