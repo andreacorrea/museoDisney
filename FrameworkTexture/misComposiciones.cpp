@@ -23,12 +23,33 @@ void muestraCastillo()
 	escena->objetos["castillo"]->posY=14.6;
 }
 
+
+void muestraSkydome()
+{ 
+
+    //Esfera que sirve como Sky Dome. IMPORTANTE: lighting, el ultimo parametro de defineMaterial, es false 
+    escena->agregaObjeto("skydome",(Objeto *) new Esfera(80.0,30,30,1.0,1.0,1.0));
+    escena->objetos["skydome"]->velRotX=0.1;
+	escena->objetos["skydome"]->defineMaterial(1.0,1.0,1.0,
+										 1.0,1.0,1.0,
+										 0.0,0.0,0.0,
+										 0.0,0.0,0.0,
+										 "sky1.tga",GL_REPEAT,0.5,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
+}
+
+
 void muestraSombrero()
 {
   escena->agregaObjeto("sombrero", (Objeto *) new Modelo("sombrero"));
   escena->objetos["sombrero"]->escalaUniforme(1.9);
   escena->objetos["sombrero"]->posY=1.15;
   escena->objetos["sombrero"]->posZ=-5.0;
+  escena->modificaMaterial("sombrero", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 1.0);
+  /*escena->objetos["sombrero"]->defineMaterial(1.0,1.0,1.0,
+  									 1.0,1.0,1.0,
+  									 0.0,0.0,0.0,
+  									 0.0,0.0,0.0,
+  									 "sombrero.tga",GL_REPEAT,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);*/
 }
 
 void demuestraMateriales()
@@ -111,10 +132,10 @@ void muestraProtagonista()
 }
 
 void cuboParaElClic(){
-escena->agregaObjeto("cuboParaElClic1", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
-escena->objetos["cuboParaElClic1"]->posZ=-0.25;
-escena->objetos["cuboParaElClic1"]->posX=-1.9;
-escena->objetos["cuboParaElClic1"]->posY=1.0;
+escena->agregaObjeto("cuboParaElClic", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
+escena->objetos["cuboParaElClic"]->posZ=-0.25;
+escena->objetos["cuboParaElClic"]->posX=-1.9;
+escena->objetos["cuboParaElClic"]->posY=1.0;
 
 }
 
@@ -184,14 +205,15 @@ void muestraCuadroSubirBajar(){
 										 "bumpy.tga",GL_CLAMP,0.5,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,false);*/
 }
 
+
 void creaEscena()
 {
-
+	muestraSkydome();
 	muestraCastillo();
 	muestraSombrero();
 
 	muestraProtagonista();
-	//cuboParaElClic();
+	cuboParaElClic();
 	muestraCuadroSubirBajar();
 	//muestraCuadros();
 }
