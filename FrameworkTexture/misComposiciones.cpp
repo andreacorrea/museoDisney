@@ -26,7 +26,7 @@ void muestraCastillo()
 	escena->objetos["castillo"]->escalaUniforme(20.0);
 	escena->objetos["castillo"]->rotY=-90;
 	escena->objetos["castillo"]->posY=17.5;
-
+	escena->modificaMaterial("castillo", "lambert24SG", "teja.tga", GL_REPEAT, 1, 0.25, 0,0);
 }
 
 
