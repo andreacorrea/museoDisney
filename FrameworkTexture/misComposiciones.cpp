@@ -19,9 +19,10 @@ void muestraCastillo()
 {
   //escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
 	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillotexturas"));
-  escena->objetos["castillo"]->escalaUniforme(20.0);
-  escena->objetos["castillo"]->rotY=-90;
+	escena->objetos["castillo"]->escalaUniforme(20.0);
+	escena->objetos["castillo"]->rotY=-90;
 	escena->objetos["castillo"]->posY=17.5;
+
 }
 
 
@@ -46,7 +47,7 @@ void muestraSombrero()
   escena->objetos["sombrero"]->posY=1.15;
   escena->objetos["sombrero"]->posZ=-5.0;
   escena->objetos["sombrero"]->velRotY=0.6;
-  escena->modificaMaterial("sombrero", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 1.0);
+  escena->modificaMaterial("sombrero", "blinn3SG", "sombrero.tga", GL_EYE_LINEAR, 1.0);
   /*escena->objetos["sombrero"]->defineMaterial(1.0,1.0,1.0,
   									 1.0,1.0,1.0,
   									 0.0,0.0,0.0,
@@ -61,7 +62,7 @@ void muestraPelota()
   escena->objetos["soccerball"]->posY=7.85;
   escena->objetos["soccerball"]->posZ=-5.0;
   escena->objetos["soccerball"]->velRotY=0.6;
-  escena->modificaMaterial("soccerball", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);
+  escena->modificaMaterial("soccerball", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR | GL_REPEAT, 0.5);
 }
 
 void demuestraMateriales()
@@ -250,9 +251,22 @@ void muestraRio(){
 	muestraQuad("rio1", "agua.tga", 40, 40, 0, -0.55, -6.8, 0, 90, 0.005, 0.005, 0.25);
 }
 
+void muestraAlfombra(){
+	/*
+	muestraQuad("rio1", "agua.tga", 32, 11.5, 0, -0.55, 7.47, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio2", "agua.tga", 6.475, 14.5, -12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio3", "agua.tga", 32, 8, 0, -0.5, -16.25, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio4", "agua.tga", 6.475, 14.5, 12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);*/
+	//
+
+	muestraQuad("alfombra", "alfombra.tga", 17, 13, -.2, -.5, -5, 0, 90, 0.0, 0.0, 0.25);
+	muestraQuad("alfombra2", "alfombra.tga", 13.5, 11.5, 1, 5.33, -5.3, 0, 90, 0.0, 0.0, 0.25);
+}
+
 void creaEscena()
 {
 	plano("plano", 200,1,200,0,-1.06,0);
+	muestraAlfombra();
 	muestraSkydome();
 	muestraCastillo();
 	muestraSombrero();
