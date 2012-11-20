@@ -215,27 +215,27 @@ void muestraGlobo()
 void muestraCandelabros()
 {
 	escena->agregaObjeto("candelabro", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro"]->escalaUniforme(1);
+	escena->objetos["candelabro"]->escalaUniforme(1.2);
 	escena->objetos["candelabro"]->posX=-3;
-	escena->objetos["candelabro"]->posY=4.5;
+	escena->objetos["candelabro"]->posY=4.4;
 	escena->objetos["candelabro"]->posZ=-5.0;
 
 	escena->agregaObjeto("candelabro2", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro2"]->escalaUniforme(1);
+	escena->objetos["candelabro2"]->escalaUniforme(1.2);
 	escena->objetos["candelabro2"]->posX=3;
-	escena->objetos["candelabro2"]->posY=4.5;
+	escena->objetos["candelabro2"]->posY=4.4;
 	escena->objetos["candelabro2"]->posZ=-5.0;
 
 	escena->agregaObjeto("candelabro3", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro3"]->escalaUniforme(1);
+	escena->objetos["candelabro3"]->escalaUniforme(1.2);
 	escena->objetos["candelabro3"]->posX=-3;
-	escena->objetos["candelabro3"]->posY=13.5;
+	escena->objetos["candelabro3"]->posY=12.6;
 	escena->objetos["candelabro3"]->posZ=-5.0;
 
 	escena->agregaObjeto("candelabro4", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro4"]->escalaUniforme(1);
+	escena->objetos["candelabro4"]->escalaUniforme(1.2);
 	escena->objetos["candelabro4"]->posX=3;
-	escena->objetos["candelabro4"]->posY=13.5;
+	escena->objetos["candelabro4"]->posY=12.6;
 	escena->objetos["candelabro4"]->posZ=-5.0;
 
 }
