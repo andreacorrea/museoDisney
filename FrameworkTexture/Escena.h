@@ -29,7 +29,15 @@
 #define PARED_DERECHA 7
 #define PARED_NORTE_IZQUIERDA -3
 #define PARED_IZQUIERDA -8
-#define PARED_NORTE 0
+#define PARED_NORTE -0.3
+
+#define LAGO_FONDO -27
+#define LAGO_DERECHA 20
+#define LAGO_IZQUIERDA -20
+#define LAGO_FRENTE 14
+#define PUENTE_IZQUIERDO -0.5
+#define PUENTE_DERECHO 0.5
+
 
 
 // Filtro por default para carga de texturas

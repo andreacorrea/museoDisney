@@ -99,11 +99,49 @@ bool collision(GLfloat rotY){
 	}
 
 	//Pared interna norte derecha
-	if(it1->second->posZ > PARED_NORTE && it1->second->posZ < (PARED_NORTE+1) && (angulo>90 && angulo < 270) && (it1->second->posX>PARED_NORTE_DERECHA && it1->second->posX<PARED_DERECHA)){
+	if(it1->second->posZ > PARED_NORTE && it1->second->posZ < (PARED_NORTE+1) && (angulo>90 && angulo < 270) && (it1->second->posX>PUENTE_DERECHO && it1->second->posX<PARED_DERECHA)){
 		cout << "PARED->Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
 		return true;
 	}
 
+	//RIO fondo
+	if(it1->second->posZ > LAGO_FONDO && it1->second->posZ < (LAGO_FONDO+1) && (angulo>90 && angulo < 270) && (it1->second->posX>LAGO_IZQUIERDA && it1->second->posX<LAGO_DERECHA)){
+		cout << "PARED->Objeto"<< it1->first << " pos Z:"  << it1->second->posZ<< " pos X:"  << it1->second->posX << " angulo:"<<angulo<<endl;
+		return true;
+	}
+
+	//RIO Frente IZQ
+	if(it1->second->posZ < LAGO_FRENTE && it1->second->posZ > (LAGO_FRENTE-1) && (angulo<90 || angulo > 270) && (it1->second->posX>LAGO_IZQUIERDA && it1->second->posX<PUENTE_IZQUIERDO)){
+		return true;
+	}
+
+	//RIO Frente DER
+	if(it1->second->posZ < LAGO_FRENTE && it1->second->posZ > (LAGO_FRENTE-1) && (angulo<90 || angulo > 270) && (it1->second->posX>PUENTE_DERECHO && it1->second->posX<LAGO_DERECHA)){
+		return true;
+	}
+
+	// RIO Derecha
+	if(it1->second->posX < LAGO_DERECHA && it1->second->posX > (LAGO_DERECHA-1) && (angulo < 180 ) && (it1->second->posZ>LAGO_FONDO && it1->second->posZ<LAGO_FRENTE)){
+		return true;
+	}
+
+	//RIO Izquierda
+	if(it1->second->posX > LAGO_IZQUIERDA && it1->second->posX < (LAGO_IZQUIERDA+1) && (angulo > 180) && (it1->second->posZ>LAGO_FONDO && it1->second->posZ<LAGO_FRENTE)){
+		return true;
+	}
+
+	// puente Izquierda
+	if(it1->second->posX < PUENTE_IZQUIERDO && it1->second->posX > (PUENTE_IZQUIERDO-1) && (angulo < 180 ) && (it1->second->posZ>PARED_NORTE && it1->second->posZ<LAGO_FRENTE)){
+		return true;
+	}
+
+	//puente derecha
+	if(it1->second->posX > PUENTE_DERECHO && it1->second->posX < (PUENTE_DERECHO+1) && (angulo > 180) && (it1->second->posZ>PARED_NORTE && it1->second->posZ<LAGO_FRENTE)){
+		return true;
+	}
+
+
+	
     return false;
 
 }
