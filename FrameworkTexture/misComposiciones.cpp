@@ -24,16 +24,13 @@ void defineLuces()
 
 void muestraCastillo()
 {
-  //escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
-	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillotexturas"));
+  
+	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo"));
 	escena->objetos["castillo"]->escalaUniforme(20.0);
 	escena->objetos["castillo"]->rotY=-90;
 	escena->objetos["castillo"]->posY=17.5;
 	escena->modificaMaterial("castillo", "lambert24SG", "teja.tga", GL_REPEAT, 1, 0.25, 0,0);
 	escena->modificaMaterial("castillo", "lambert26SG", "pasto.tga", GL_REPEAT, 1, 0.25, 0,0);
-	/*escena->modificaMaterial("castillo", "lambert28SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);
-	escena->modificaMaterial("castillo", "lambert25SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);
-	escena->modificaMaterial("castillo", "lambert20SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);*/
 }
 
 
@@ -60,84 +57,21 @@ void muestraSombrero()
   escena->objetos["sombrero"]->posZ=-5.0;
   escena->objetos["sombrero"]->velRotY=0.6;
   escena->modificaMaterial("sombrero", "blinn3SG", "sombrero.tga", GL_EYE_LINEAR, 1.0);
-  /*escena->objetos["sombrero"]->defineMaterial(1.0,1.0,1.0,
-  									 1.0,1.0,1.0,
-  									 0.0,0.0,0.0,
-  									 0.0,0.0,0.0,
-  									 "sombrero.tga",GL_REPEAT,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);*/
+  
 }
 
 void muestraPelota()
 {
-  escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota2"));
-  escena->objetos["pelota"]->escalaUniforme(1.5);
-  escena->objetos["pelota"]->posY=7.85;
-  escena->objetos["pelota"]->posZ=-5.0;
-  escena->objetos["pelota"]->velRotY=0.6;
-  escena->modificaMaterial("pelota", "blinn1SG", ".tga", GL_EYE_LINEAR, 1);
-	/*escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
-	escena->objetos["pelota"]->velRotY=1.0;
+	escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
+	escena->objetos["pelota"]->velRotY=2.0;
+	
 	escena->objetos["pelota"]->posY=7.85;
 	escena->objetos["pelota"]->posZ=-5.0;
 	escena->objetos["pelota"]->defineMaterial(1.0,1.0,1.0,
 										 1.0,1.0,1.0,
 										 0.0,0.0,0.0,
 										 0.0,0.0,0.0,
-										 "sombrero.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,true);*/
-}
-
-void demuestraMateriales()
-{ 
-
-    //Esfera que sirve como Sky Dome. IMPORTANTE: lighting, el ultimo parametro de defineMaterial, es false 
-    escena->agregaObjeto("skydome",(Objeto *) new Esfera(40.0,30,30,1.0,1.0,1.0));
-    escena->objetos["skydome"]->velRotX=0.1;
-	escena->objetos["skydome"]->defineMaterial(1.0,1.0,1.0,
-										 1.0,1.0,1.0,
-										 0.0,0.0,0.0,
-										 0.0,0.0,0.0,
-										 "agua.tga",GL_REPEAT,0.5,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
-
-
-    //Modelo Texturizado
-	escena->agregaObjeto("f-16", (Objeto *) new Modelo("f-16",TEX_SPHERE));//como se va a mapear, mapeo esférico, metalico
-	escena->objetos["f-16"]->escalaUniforme(2.0);
-	//escena->objetos["f-16"]->velRotX=1.0;
-	escena->modificaMaterial("f-16", "blue", "chrome.tga", GL_REPEAT, 1.0,1.0,0.0,0.0);//al grupo de poligonos debe aplicarle la textura chrome repetidamente
-    escena->modificaMaterial("f-16", "glass", "agua.tga", GL_REPEAT, 0.5);//0.5 de transparencia
-	
-	
-	//Tres objetos iguales que copian el material del modelo con los diferentes modos de mapeo de texturas
-	escena->agregaObjeto("tetera1",(Objeto *) new Tetera(1.0,1.0,0.0,1.0));
-    escena->objetos["tetera1"]->velRotX=-1.0;
-	escena->objetos["tetera1"]->posX=-5.0;
-	escena->objetos["tetera1"]->posY=3.0;
-	escena->objetos["tetera1"]->loopFrames=200;
-	escena->objetos["tetera1"]->copiaMaterial("f-16","blue",GL_OBJECT_LINEAR);//modo de mapeo textura pegada al objeto
-	
-	escena->agregaObjeto("tetera2",(Objeto *) new Tetera(1.0,1.0,0.0,1.0));
-    escena->objetos["tetera2"]->velRotX=-1.0;
-	escena->objetos["tetera2"]->posY=3.0;
-	escena->objetos["tetera2"]->loopFrames=200;
-	escena->objetos["tetera2"]->copiaMaterial("f-16","blue",GL_EYE_LINEAR);//textura fija el objeto se mueve sobre la textura
-	
-	escena->agregaObjeto("tetera3",(Objeto *) new Tetera(1.0,1.0,0.0,1.0));
-    escena->objetos["tetera3"]->velRotX=-1.0;
-	escena->objetos["tetera3"]->posX=5.0;
-	escena->objetos["tetera3"]->posY=3.0;
-	escena->objetos["tetera3"]->loopFrames=200;
-	escena->objetos["tetera3"]->copiaMaterial("f-16","blue",GL_SPHERE_MAP);//sensacion de metal
-	
-}
-
-
-
-void demuestraPared()
-{
-  escena->agregaObjeto("pared", (Objeto *) new Cubo(5, 0.0, 0.0, 1.0));
-  escena->objetos["pared"]->posZ=-2.50;
-  escena->objetos["pared"]->posY=2.5;
-  
+										 "pelota.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,true);
 }
 
 void muestraProtagonista()
@@ -162,13 +96,12 @@ void baseManzana(){
 
 void muestraManzana()
 {
-  escena->agregaObjeto("manzana", (Objeto *) new Modelo("manzana2"));
+  escena->agregaObjeto("manzana", (Objeto *) new Modelo("manzana"));
   escena->objetos["manzana"]->escalaUniforme(0.5);
   escena->objetos["manzana"]->posX=-7.7;
   escena->objetos["manzana"]->posY=1.38;
   escena->objetos["manzana"]->posZ=-2.3;
   escena->objetos["manzana"]->velRotY=0.6;
-  //escena->modificaMaterial("manzana", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);
 
 }
 
@@ -196,6 +129,29 @@ void muestraLampara()
 
 }
 
+void muestraBanderas()
+{
+	escena->agregaObjeto("bandera", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera"]->escalaUniforme(1);
+	escena->objetos["bandera"]->posX=0.35;
+	escena->objetos["bandera"]->posY=36;
+	escena->objetos["bandera"]->posZ=-5.0;
+
+	escena->agregaObjeto("bandera2", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera2"]->escalaUniforme(1);
+	escena->objetos["bandera2"]->posX=-3.65;
+	escena->objetos["bandera2"]->posY=23.9;
+	escena->objetos["bandera2"]->posZ=-1;
+
+	escena->agregaObjeto("bandera3", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera3"]->escalaUniforme(1);
+	escena->objetos["bandera3"]->posX=6.7;
+	escena->objetos["bandera3"]->posY=23.9;
+	escena->objetos["bandera3"]->posZ=-1;
+
+
+}
+
 //metodos para la globo
 void baseGlobo(){
 	escena->agregaObjeto("baseGlobo", (Objeto *) new Cubo(0.4, 0.0, 0.0, 1.0));
@@ -215,13 +171,13 @@ void muestraGlobo()
 	escena->objetos["globo"]->posY=7.5;
 	escena->objetos["globo"]->posZ=-5.2;
 	escena->objetos["globo"]->velRotY=0.6;
-	escena->modificaMaterial("manzana", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
+	
 
 }
 
 void muestraCandelabros()
 {
-	escena->agregaObjeto("candelabro", (Objeto *) new Modelo("candelabro"));
+	escena->agregaObjeto("candelabro", (Objeto *) new Poses("candelabro%d",2,3));
 	escena->objetos["candelabro"]->escalaUniforme(1.8);
 	escena->objetos["candelabro"]->posX=-3;
 	escena->objetos["candelabro"]->posY=4;
@@ -369,7 +325,7 @@ void muestraRio(){
 	muestraQuad("rio3", "agua.tga", 32, 8, 0, -0.5, -16.25, 0, 90, 0.005, 0.005, 0.25);
 	muestraQuad("rio4", "agua.tga", 6.475, 14.5, 12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);*/
 	//o
-	muestraQuad("rio1", "agua.tga", 40, 40, 0, -0.55, -6.8, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio1", "agua.tga", 30, 40, 0, -0.55, -6.8, 0, 90, 0.005, 0.005, 0.25);
 }
 
 void muestraAlfombra(){
@@ -440,19 +396,19 @@ void creaEscena()
 	//muestraArboles();
 	muestraProtagonista();
 	//manzana
-	/*baseManzana();
-	muestraManzana();*/
+	baseManzana();
+	muestraManzana();
 	//lampara
-	/*baseLampara();
-	muestraLampara();*/
+	baseLampara();
+	muestraLampara();
 	//globo
-	/*baseGlobo();
+	baseGlobo();
 	muestraGlobo();
-	muestraCuadroSubirBajar();*/
+	//muestraCuadroSubirBajar();
 	muestraCuadros();
 	muestraRio();
 	muestraPelota();
-	muestraCandelabros();
+	//muestraCandelabros();
 
 	//PlaySound((LPCSTR) "C:\\move.WAV", NULL, SND_FILENAME | SND_ASYNC);
 	//PlaySound(TEXT("C:\\move.MP3"), NULL, SND_FILENAME | SND_ASYNC);

@@ -9,5 +9,4 @@ void creaEscena();
 
 //Ejemplos particulares
 void muestraCastillo();
-void demuestraMateriales();
 void muestraSombrero();
