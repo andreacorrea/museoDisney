@@ -1,5 +1,9 @@
 #include "misComposiciones.h"
 #include <iostream>
+#include "misInteracciones.h"
+#include "iostream"
+
+int flagpiso =1;
 
 void defineLuces()
 {
@@ -207,6 +211,34 @@ void muestraGlobo()
 	//escena->modificaMaterial("manzana", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
 
 }
+
+void muestraCandelabros()
+{
+	escena->agregaObjeto("candelabro", (Objeto *) new Modelo("candelabro"));
+	escena->objetos["candelabro"]->escalaUniforme(1);
+	escena->objetos["candelabro"]->posX=-3;
+	escena->objetos["candelabro"]->posY=4.5;
+	escena->objetos["candelabro"]->posZ=-5.0;
+
+	escena->agregaObjeto("candelabro2", (Objeto *) new Modelo("candelabro"));
+	escena->objetos["candelabro2"]->escalaUniforme(1);
+	escena->objetos["candelabro2"]->posX=3;
+	escena->objetos["candelabro2"]->posY=4.5;
+	escena->objetos["candelabro2"]->posZ=-5.0;
+
+	escena->agregaObjeto("candelabro3", (Objeto *) new Modelo("candelabro"));
+	escena->objetos["candelabro3"]->escalaUniforme(1);
+	escena->objetos["candelabro3"]->posX=-3;
+	escena->objetos["candelabro3"]->posY=13.5;
+	escena->objetos["candelabro3"]->posZ=-5.0;
+
+	escena->agregaObjeto("candelabro4", (Objeto *) new Modelo("candelabro"));
+	escena->objetos["candelabro4"]->escalaUniforme(1);
+	escena->objetos["candelabro4"]->posX=3;
+	escena->objetos["candelabro4"]->posY=13.5;
+	escena->objetos["candelabro4"]->posZ=-5.0;
+
+}
 void referencias(){
 	escena->agregaObjeto("x-", (Objeto *) new Esfera(0.1, 20,20,0,0,1));
 	escena->objetos["x-"]->posX=-3;
@@ -258,6 +290,7 @@ void muestraCuadros(){
 	GLfloat paredPuertaZ = -0.7;
 	//Cuadros primer piso
 	muestraQuad("CuadroBlancanieves", "cuadros/CuadroBlancanieves.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
+	muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 0.01, 0.01, -8.27, primerPisoPosY, -4, 90, 0);
 	muestraQuad("CuadroAprendizBrujo", "cuadros/CuadroAprendizBrujo.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
 	muestraQuad("CuadroBellaYBestia", "cuadros/CuadroCuadroBellaYBestia.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
 	muestraQuad("CuadroPinocho", "cuadros/CuadroPinocho.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
@@ -286,6 +319,18 @@ void muestraCuadroSubirBajar(){
 										 0.0,0.0,0.0,
 										 0.0,0.0,0.0,
 										 "bumpy.tga",GL_CLAMP,0.5,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,false);*/
+}
+
+
+//muestra cuadros de informacion
+void checaPosicionCuadro(){
+
+	Objeto *prot=escena->objetos["protagonista"];
+	//blancaNieves info X: -7.5 , Z:-4
+	if(prot->posX < -6.75  && prot->posX > -8.25 && prot->posZ > -4.75 && prot->posZ < -3.25 ){
+		escena->objetos["infoBlancaNieves"]->escalaY=4.0;
+		escena->objetos["infoBlancaNieves"]->escalaX=2.5;
+	}
 }
 
 void muestraRio(){
@@ -332,5 +377,9 @@ void creaEscena()
 	muestraCuadros();
 	muestraRio();
 	muestraPelota();
+	muestraCandelabros();
+	//cuadros para info
+	checaPosicionCuadro();
+
 }
 
