@@ -11,14 +11,94 @@ double degToRad(double deg){
 
 void interaccionCuadros(){
 	Objeto *prot=escena->objetos["protagonista"];
-	if(prot->posX < -6  && prot->posX > -8.25 && prot->posZ > -4.5 && prot->posZ < -3.5 ){
+	GLfloat primerPiso=0.25;
+	GLfloat segundoPiso=6.25;
+	//blancanieves
+	if(prot->posX < -6  && prot->posX > -8.25 && prot->posZ > -4.5 && prot->posZ < -3.5 && prot->posY == primerPiso ){
 		escena->objetos["infoBlancaNieves"]->posX=-8.2;
-		/*escena->objetos["infoBlancaNieves"]->escalaY=4.0;
-		escena->objetos["infoBlancaNieves"]->escalaX=2.5;*/
-		//muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 1.5, 1.5, -8, primerPisoPosY, -4, 90, 0);
-	}
-	else{
+		
+	}else{
 		escena->objetos["infoBlancaNieves"]->posX=-8.3;
+	}
+	//aprendiz de brujo
+	if(prot->posX < -0.75  && prot->posX > -3.25 && prot->posZ > -10.8 && prot->posZ < -8.8 && prot->posY == primerPiso){
+		escena->objetos["infoAprendizBrujo"]->posZ=-10.9;
+		
+	}else{
+		escena->objetos["infoAprendizBrujo"]->posZ=-11.2;
+	}
+
+	//Bella y Bestia
+	if(prot->posX < 4.25  && prot->posX > 1.75 && prot->posZ > -10.8 && prot->posZ < -8.8 && prot->posY == primerPiso){
+		escena->objetos["infoBellaYBestia"]->posZ=-10.9;
+		
+	}else{
+		escena->objetos["infoBellaYBestia"]->posZ=-11.2;
+	}
+
+	
+	//Pinocho
+	if(prot->posX < 7.5  && prot->posX > 5.5 && prot->posZ > -8.75 && prot->posZ < -6.25 && prot->posY == primerPiso){
+		escena->objetos["infoPinocho"]->posX=7.6;
+		
+	}else{
+		escena->objetos["infoPinocho"]->posX=7.8;
+	}
+
+	//Aladin
+	if(prot->posX < 7.5  && prot->posX > 5.5 && prot->posZ > -3.75 && prot->posZ < -1.25 && prot->posY == primerPiso){
+		escena->objetos["infoAladdin"]->posX=7.6;
+		
+	}else{
+		escena->objetos["infoAladdin"]->posX=7.8;
+	}
+
+	//ToyStory
+	if(prot->posX < -0.75  && prot->posX > -3.25 && prot->posZ > -10.8 && prot->posZ < -8.8 && prot->posY == segundoPiso){
+		escena->objetos["infoToyStory"]->posZ=-10.7;
+		
+	}else{
+		escena->objetos["infoToyStory"]->posZ=-11.1;
+	}
+
+	//Increibles
+	if(prot->posX < 4.25  && prot->posX > -1.75 && prot->posZ > -10.8 && prot->posZ < -8.8 && prot->posY == segundoPiso){
+		escena->objetos["infoIncreibles"]->posZ=-10.9;
+		
+	}else{
+		escena->objetos["infoIncreibles"]->posZ=-11.1;
+	}
+
+	//Up
+	if(prot->posX < 7.5  && prot->posX > 5.5 && prot->posZ > -8.75 && prot->posZ < -6.25 && prot->posY == segundoPiso){
+		escena->objetos["infoUp"]->posX=7.6;
+		
+	}else{
+		escena->objetos["infoUp"]->posX=7.8;
+	}
+
+	//Nemo
+	if(prot->posX < 7.5  && prot->posX > 5.5 && prot->posZ > -3.75 && prot->posZ < -1.25 && prot->posY == segundoPiso){
+		escena->objetos["infoNemo"]->posX=7.5;
+		
+	}else{
+		escena->objetos["infoNemo"]->posX=7.8;
+	}
+
+	//WallE
+	if(prot->posX < 2.75  && prot->posX > 5.25 && prot->posZ > -3 && prot->posZ < -1 && prot->posY == segundoPiso){
+		escena->objetos["infoWallE"]->posZ=-0.99;
+		
+	}else{
+		escena->objetos["infoWallE"]->posZ=-0.7;
+	}
+
+	//Monsters Inc
+	if(prot->posX < 4.25  && prot->posX > 1.75 && prot->posZ > -3 && prot->posZ < -1 && prot->posY == segundoPiso){
+		escena->objetos["infoMonstersInc"]->posZ=-0.85;
+		
+	}else{
+		escena->objetos["infoMonstersInc"]->posZ=-0.7;
 	}
 }
 

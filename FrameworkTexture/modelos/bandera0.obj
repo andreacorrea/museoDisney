@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib bandera3.mtl
+mtllib bandera0.mtl
 g default
 v 0.137294 0.635349 -0.047428
 v 0.115494 0.635349 -0.090213

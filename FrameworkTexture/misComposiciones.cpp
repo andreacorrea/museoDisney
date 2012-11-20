@@ -129,6 +129,29 @@ void muestraLampara()
 
 }
 
+void muestraBanderas()
+{
+	escena->agregaObjeto("bandera", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera"]->escalaUniforme(1);
+	escena->objetos["bandera"]->posX=0.35;
+	escena->objetos["bandera"]->posY=36;
+	escena->objetos["bandera"]->posZ=-5.0;
+
+	escena->agregaObjeto("bandera2", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera2"]->escalaUniforme(1);
+	escena->objetos["bandera2"]->posX=-3.65;
+	escena->objetos["bandera2"]->posY=23.9;
+	escena->objetos["bandera2"]->posZ=-1;
+
+	escena->agregaObjeto("bandera3", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera3"]->escalaUniforme(1);
+	escena->objetos["bandera3"]->posX=6.7;
+	escena->objetos["bandera3"]->posY=23.9;
+	escena->objetos["bandera3"]->posZ=-1;
+
+
+}
+
 //metodos para la globo
 void baseGlobo(){
 	escena->agregaObjeto("baseGlobo", (Objeto *) new Cubo(0.4, 0.0, 0.0, 1.0));
@@ -154,7 +177,7 @@ void muestraGlobo()
 
 void muestraCandelabros()
 {
-	escena->agregaObjeto("candelabro", (Objeto *) new Modelo("candelabro"));
+	escena->agregaObjeto("candelabro", (Objeto *) new Poses("candelabro%d",2,3));
 	escena->objetos["candelabro"]->escalaUniforme(1.8);
 	escena->objetos["candelabro"]->posX=-3;
 	escena->objetos["candelabro"]->posY=4;
@@ -242,10 +265,10 @@ void muestraCuadros(){
 	muestraQuad("infoBellaYBestia", "cuadros/CuadroBellaYBestia_informacion.tga", ancho, alto, 3, primerPisoPosY, -11.2, 0, 0);
 	
 	muestraQuad("CuadroPinocho", "cuadros/CuadroPinocho.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
-	muestraQuad("infoPinocho", "cuadros/CuadroPinocho_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -7.5, 90, 0);
+	muestraQuad("infoPinocho", "cuadros/CuadroPinocho_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -7.5, 270, 0);
 	
 	muestraQuad("CuadroAladdin", "cuadros/CuadroAladdin.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
-	muestraQuad("infoAladdin", "cuadros/CuadroAladdin_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -2.5, 90, 0);
+	muestraQuad("infoAladdin", "cuadros/CuadroAladdin_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -2.5, 270, 0);
 	
 
 	//Cuadros segundo piso
@@ -257,16 +280,16 @@ void muestraCuadros(){
 	muestraQuad("infoIncreibles", "cuadros/CuadroIncreibles_informacion.tga", ancho, alto, 3, segundopisoPosY, -11.2, 0, 0);
 
 	muestraQuad("CuadroNemo", "cuadros/CuadroNemo.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
-	muestraQuad("infoNemo", "cuadros/CuadroNemo_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -2.5, 90, 0);
+	muestraQuad("infoNemo", "cuadros/CuadroNemo_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -2.5, 270, 0);
 
 	muestraQuad("CuadroUp", "cuadros/CuadroUp.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
-	muestraQuad("infoUp", "cuadros/CuadroUp_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -7.5, 90, 0);
+	muestraQuad("infoUp", "cuadros/CuadroUp_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -7.5, 270, 0);
 
 	muestraQuad("CuadroWallE", "cuadros/CuadroWallE.tga", ancho, alto, -4, segundopisoPosY, -0.8, 0, 0);
 	muestraQuad("infoWallE", "cuadros/CuadroWallE_informacion.tga", ancho, alto, -4, segundopisoPosY, -0.7, 0, 0);
 
-	muestraQuad("CuadroMonstersInc", "cuadros/CuadroMonstersInc.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
-	muestraQuad("infoMonstersInc", "cuadros/CuadroMonstersInc_informacion.tga", ancho, alto, 3, segundopisoPosY, -0.6, 0, 0);
+	muestraQuad("CuadroMonstersInc", "cuadros/CuadroMonstersInc.tga", ancho, alto, 3, segundopisoPosY, -0.8, 0, 0);
+	muestraQuad("infoMonstersInc", "cuadros/CuadroMonstersInc_informacion.tga", ancho, alto, 3, segundopisoPosY, -0.7, 0, 0);
 	
 }
 
