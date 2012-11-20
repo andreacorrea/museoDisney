@@ -386,7 +386,7 @@ void creaEscena()
 	muestraSkydome();
 	muestraCastillo();
 	muestraSombrero();
-	muestraArboles();
+	//muestraArboles();
 	muestraProtagonista();
 	//manzana
 	baseManzana();
