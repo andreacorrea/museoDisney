@@ -35,7 +35,8 @@ void muestraSkydome()
 
     //Esfera que sirve como Sky Dome. IMPORTANTE: lighting, el ultimo parametro de defineMaterial, es false 
     escena->agregaObjeto("skydome",(Objeto *) new Esfera(80.0,30,30,1.0,1.0,1.0));
-    escena->objetos["skydome"]->velRotX=0.1;
+    //escena->objetos["skydome"]->velRotX=0.3;
+	//escena->objetos["skydome"]->velRotZ=1.0;
 	escena->objetos["skydome"]->defineMaterial(1.0,1.0,1.0,
 										 1.0,1.0,1.0,
 										 0.0,0.0,0.0,
@@ -185,7 +186,7 @@ void muestraLampara()
   escena->objetos["lampara"]->posY=1.4;
   escena->objetos["lampara"]->posZ=-5;
   escena->objetos["lampara"]->velRotY=0.6;
-  //escena->modificaMaterial("manzana", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
+  escena->modificaMaterial("manzana", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
 
 }
 
@@ -208,7 +209,7 @@ void muestraGlobo()
 	escena->objetos["globo"]->posY=7.5;
 	escena->objetos["globo"]->posZ=-5.2;
 	escena->objetos["globo"]->velRotY=0.6;
-	//escena->modificaMaterial("manzana", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
+	escena->modificaMaterial("manzana", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
 
 }
 
@@ -344,15 +345,38 @@ void muestraRio(){
 }
 
 void muestraAlfombra(){
-	/*
-	muestraQuad("rio1", "agua.tga", 32, 11.5, 0, -0.55, 7.47, 0, 90, 0.005, 0.005, 0.25);
-	muestraQuad("rio2", "agua.tga", 6.475, 14.5, -12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);
-	muestraQuad("rio3", "agua.tga", 32, 8, 0, -0.5, -16.25, 0, 90, 0.005, 0.005, 0.25);
-	muestraQuad("rio4", "agua.tga", 6.475, 14.5, 12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);*/
-	//
-
 	muestraQuad("alfombra", "alfombra.tga", 17, 13, -.2, -.5, -5, 0, 90, 0.0, 0.0, 0.25);
 	muestraQuad("alfombra2", "alfombra.tga", 13.5, 11.5, 1, 5.33, -5.3, 0, 90, 0.0, 0.0, 0.25);
+}
+
+
+void muestraArboles(){
+	char nombre[100];
+	for(int i=2; i>1 ;i--){
+		sprintf(nombre, "nom%i", i);
+		escena->agregaObjeto(nombre, (Objeto *) new Modelo("arboles"));
+		escena->objetos[nombre]->escalaUniforme(8);
+		escena->objetos[nombre]->posY=5;
+		escena->objetos[nombre]->posX=(i*-5)-15;
+		escena->objetos[nombre]->posZ=-2;
+		escena->modificaMaterial(nombre, "birchBlowing2LeafShaderSG", "hoja.tga", GL_EYE_LINEAR, 1);
+		escena->modificaMaterial(nombre, "birchBlowing2ShaderSG", "bumpy.tga", GL_EYE_LINEAR, 1);
+		escena->modificaMaterial(nombre, "keyakiStreet2LeafShaderSG", "hoja.tga", GL_EYE_LINEAR, 1);
+		escena->modificaMaterial(nombre, "keyakiStreet2ShaderSG", "bumpy.tga", GL_EYE_LINEAR, 1);
+	}
+
+	for(int i=2; i>1 ;i--){
+		sprintf(nombre, "nom%i", i+5);
+		escena->agregaObjeto(nombre, (Objeto *) new Modelo("arboles"));
+		escena->objetos[nombre]->escalaUniforme(8);
+		escena->objetos[nombre]->posY=5;
+		escena->objetos[nombre]->posX=(i*5)+15;
+		escena->objetos[nombre]->posZ=-2;
+		escena->modificaMaterial(nombre, "birchBlowing2LeafShaderSG", "hoja.tga", GL_EYE_LINEAR, 1);
+		escena->modificaMaterial(nombre, "birchBlowing2ShaderSG", "bumpy.tga", GL_EYE_LINEAR, 1);
+		escena->modificaMaterial(nombre, "keyakiStreet2LeafShaderSG", "hoja.tga", GL_EYE_LINEAR, 1);
+		escena->modificaMaterial(nombre, "keyakiStreet2ShaderSG", "bumpy.tga", GL_EYE_LINEAR, 1);
+	}
 }
 
 void creaEscena()
@@ -362,7 +386,7 @@ void creaEscena()
 	muestraSkydome();
 	muestraCastillo();
 	muestraSombrero();
-
+	muestraArboles();
 	muestraProtagonista();
 	//manzana
 	baseManzana();
