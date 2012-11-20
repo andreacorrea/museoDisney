@@ -66,12 +66,6 @@ void muestraSombrero()
 
 void muestraPelota()
 {
-  /*escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota2"));
-  escena->objetos["pelota"]->escalaUniforme(1.5);
-  escena->objetos["pelota"]->posY=7.85;
-  escena->objetos["pelota"]->posZ=-5.0;
-  escena->objetos["pelota"]->velRotY=0.6;
-  escena->modificaMaterial("pelota", "blinn1SG", "textura_pelota3.tga", GL_EYE_LINEAR, 1);*/
 	escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
 	escena->objetos["pelota"]->velRotY=2.0;
 	
@@ -81,7 +75,7 @@ void muestraPelota()
 										 1.0,1.0,1.0,
 										 0.0,0.0,0.0,
 										 0.0,0.0,0.0,
-										 "textura_pelota3.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,true);
+										 "pelota.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,true);
 }
 
 void demuestraMateriales()
