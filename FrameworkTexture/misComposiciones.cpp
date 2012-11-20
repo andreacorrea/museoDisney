@@ -45,12 +45,23 @@ void muestraSombrero()
   escena->objetos["sombrero"]->escalaUniforme(1.9);
   escena->objetos["sombrero"]->posY=1.15;
   escena->objetos["sombrero"]->posZ=-5.0;
+  escena->objetos["sombrero"]->velRotY=0.6;
   escena->modificaMaterial("sombrero", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 1.0);
   /*escena->objetos["sombrero"]->defineMaterial(1.0,1.0,1.0,
   									 1.0,1.0,1.0,
   									 0.0,0.0,0.0,
   									 0.0,0.0,0.0,
   									 "sombrero.tga",GL_REPEAT,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);*/
+}
+
+void muestraPelota()
+{
+  escena->agregaObjeto("soccerball", (Objeto *) new Modelo("soccerball"));
+  escena->objetos["soccerball"]->escalaUniforme(1.9);
+  escena->objetos["soccerball"]->posY=7.85;
+  escena->objetos["soccerball"]->posZ=-5.0;
+  escena->objetos["soccerball"]->velRotY=0.6;
+  escena->modificaMaterial("soccerball", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);
 }
 
 void demuestraMateriales()
@@ -125,11 +136,26 @@ void muestraProtagonista()
   escena->objetos["protagonista"]->rotY=180;
 }
 
-void cuboParaElClic(){
-escena->agregaObjeto("cuboParaElClic", (Objeto *) new Cubo(0.3, 0.0, 0.5, 0.5));
-escena->objetos["cuboParaElClic"]->posZ=-0.25;
-escena->objetos["cuboParaElClic"]->posX=-1.9;
-escena->objetos["cuboParaElClic"]->posY=1.0;
+//metodos para la manzana
+void baseManzana(){
+	escena->agregaObjeto("baseManzana", (Objeto *) new Cubo(0.4, 0.0, 0.0, 1.0));
+	escena->objetos["baseManzana"]->posZ=-2.5;
+	escena->objetos["baseManzana"]->posX=-8.0;
+	escena->objetos["baseManzana"]->posY=0.20;
+	escena->objetos["baseManzana"]->escalaY=4.0;
+	escena->objetos["baseManzana"]->defineMaterial(1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,
+								"chrome.tga",GL_REPEAT,0.5,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
+	
+}
+
+void muestraManzana()
+{
+  escena->agregaObjeto("manzana", (Objeto *) new Modelo("manzana"));
+  escena->objetos["manzana"]->escalaUniforme(0.9);
+  escena->objetos["manzana"]->posX=-8.0;
+  escena->objetos["manzana"]->posY=4.2;
+  escena->objetos["manzana"]->posZ=-2.5;
+  escena->objetos["manzana"]->velRotY=0.6;
 
 }
 
@@ -177,7 +203,7 @@ void muestraCuadros(){
 	GLfloat ancho=2.5;
 	GLfloat alto=4.0;
 	GLfloat primerPisoPosY=2;
-	GLfloat segundopisoPosY=7;
+	GLfloat segundopisoPosY=8;
 	GLfloat paredIzqX = -8.275;
 	GLfloat paredDerX = 7.625;
 	GLfloat paredFondoZ = -11.0;
@@ -196,7 +222,7 @@ void muestraCuadros(){
 	muestraQuad("CuadroIncreibles", "cuadros/CuadroIncreibles.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0, 0);
 	muestraQuad("CuadroNemo", "cuadros/CuadroNemo.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
 	muestraQuad("CuadroUp", "cuadros/CuadroUp.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
-	muestraQuad("CuadroWallE", "cuadros/CuadroWallE.tga", ancho, alto, -2, segundopisoPosY, paredPuertaZ, 0, 0);
+	muestraQuad("CuadroWallE", "cuadros/CuadroWallE.tga", ancho, alto, -4, segundopisoPosY, -0.9, 0, 0);
 	muestraQuad("CuadroMonstersInc", "cuadros/CuadroMonstersInc.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
 
 }
@@ -232,9 +258,10 @@ void creaEscena()
 	muestraSombrero();
 
 	muestraProtagonista();
-	cuboParaElClic();
+	baseManzana();
 	muestraCuadroSubirBajar();
 	muestraCuadros();
 	muestraRio();
+	muestraPelota();
 }
 
