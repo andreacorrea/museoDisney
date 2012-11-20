@@ -3,6 +3,9 @@
 #include "misInteracciones.h"
 #include "iostream"
 
+#include <windows.h>
+#include <mmsystem.h>
+
 int flagpiso =1;
 
 void defineLuces()
@@ -428,7 +431,6 @@ void plano(){
 void creaEscena()
 {
 
-	//plano("plano", 200,1,200,0,-1.06,0);
 	plano();
 	muestraAlfombra();
 	muestraSkydome();
@@ -451,6 +453,10 @@ void creaEscena()
 	muestraRio();
 	muestraPelota();
 	muestraCandelabros();
+
+	//PlaySound((LPCSTR) "C:\\move.WAV", NULL, SND_FILENAME | SND_ASYNC);
+	//PlaySound(TEXT("C:\\move.MP3"), NULL, SND_FILENAME | SND_ASYNC);
+
 
 }
 
