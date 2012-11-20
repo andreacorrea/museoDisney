@@ -62,12 +62,21 @@ void muestraSombrero()
 
 void muestraPelota()
 {
-  escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota"));
+  /*escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota"));
   escena->objetos["pelota"]->escalaUniforme(1.5);
   escena->objetos["pelota"]->posY=7.85;
   escena->objetos["pelota"]->posZ=-5.0;
   escena->objetos["pelota"]->velRotY=0.6;
-  escena->modificaMaterial("pelota", "blinn1SG", "pelota.tga", GL_EYE_LINEAR, 0.5);
+  escena->modificaMaterial("pelota", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);*/
+	escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
+	escena->objetos["pelota"]->velRotY=1.0;
+	escena->objetos["pelota"]->posY=7.85;
+	escena->objetos["pelota"]->posZ=-5.0;
+	escena->objetos["pelota"]->defineMaterial(1.0,1.0,1.0,
+										 1.0,1.0,1.0,
+										 0.0,0.0,0.0,
+										 0.0,0.0,0.0,
+										 "sombrero.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,true);
 }
 
 void demuestraMateriales()
@@ -162,7 +171,7 @@ void muestraManzana()
   escena->objetos["manzana"]->posY=1.38;
   escena->objetos["manzana"]->posZ=-2.3;
   escena->objetos["manzana"]->velRotY=0.6;
-  escena->modificaMaterial("manzana", "blinn1SG", "manzanacolor.tga", GL_EYE_LINEAR, 0.5);
+  escena->modificaMaterial("manzana", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);
 
 }
 
@@ -216,27 +225,27 @@ void muestraGlobo()
 void muestraCandelabros()
 {
 	escena->agregaObjeto("candelabro", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro"]->escalaUniforme(1.2);
+	escena->objetos["candelabro"]->escalaUniforme(1.8);
 	escena->objetos["candelabro"]->posX=-3;
-	escena->objetos["candelabro"]->posY=4.4;
+	escena->objetos["candelabro"]->posY=4;
 	escena->objetos["candelabro"]->posZ=-5.0;
 
 	escena->agregaObjeto("candelabro2", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro2"]->escalaUniforme(1.2);
+	escena->objetos["candelabro2"]->escalaUniforme(1.8);
 	escena->objetos["candelabro2"]->posX=3;
-	escena->objetos["candelabro2"]->posY=4.4;
+	escena->objetos["candelabro2"]->posY=4;
 	escena->objetos["candelabro2"]->posZ=-5.0;
 
 	escena->agregaObjeto("candelabro3", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro3"]->escalaUniforme(1.2);
+	escena->objetos["candelabro3"]->escalaUniforme(1.8);
 	escena->objetos["candelabro3"]->posX=-3;
-	escena->objetos["candelabro3"]->posY=12.6;
+	escena->objetos["candelabro3"]->posY=12.3;
 	escena->objetos["candelabro3"]->posZ=-5.0;
 
 	escena->agregaObjeto("candelabro4", (Objeto *) new Modelo("candelabro"));
-	escena->objetos["candelabro4"]->escalaUniforme(1.2);
+	escena->objetos["candelabro4"]->escalaUniforme(1.8);
 	escena->objetos["candelabro4"]->posX=3;
-	escena->objetos["candelabro4"]->posY=12.6;
+	escena->objetos["candelabro4"]->posY=12.3;
 	escena->objetos["candelabro4"]->posZ=-5.0;
 
 }
@@ -289,9 +298,16 @@ void muestraCuadros(){
 	GLfloat paredDerX = 7.625;
 	GLfloat paredFondoZ = -11.0;
 	GLfloat paredPuertaZ = -0.7;
+	Objeto *prot=escena->objetos["protagonista"];
 	//Cuadros primer piso
 	muestraQuad("CuadroBlancanieves", "cuadros/CuadroBlancanieves.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
-	muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 0.01, 0.01, -8.27, primerPisoPosY, -4, 90, 0);
+	muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 0.5, 0.5, -8, primerPisoPosY, -4, 90, 0);
+	if(prot->posX < -6  && prot->posX > -8.25 && prot->posZ > -4.5 && prot->posZ < -3.5 ){
+		escena->objetos["infoBlancaNieves"]->escalaY=4.0;
+		escena->objetos["infoBlancaNieves"]->escalaX=2.5;
+		//muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 1.5, 1.5, -8, primerPisoPosY, -4, 90, 0);
+	}muestraQuad("cuadro", "subir.tga", 1, 1, -6.5, 0.25, -4, 0, 90);
+
 	muestraQuad("CuadroAprendizBrujo", "cuadros/CuadroAprendizBrujo.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
 	muestraQuad("CuadroBellaYBestia", "cuadros/CuadroCuadroBellaYBestia.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
 	muestraQuad("CuadroPinocho", "cuadros/CuadroPinocho.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
@@ -323,7 +339,7 @@ void muestraCuadroSubirBajar(){
 }
 
 
-//muestra cuadros de informacion
+/*/muestra cuadros de informacion
 void checaPosicionCuadro(){
 
 	Objeto *prot=escena->objetos["protagonista"];
@@ -332,7 +348,7 @@ void checaPosicionCuadro(){
 		escena->objetos["infoBlancaNieves"]->escalaY=4.0;
 		escena->objetos["infoBlancaNieves"]->escalaX=2.5;
 	}
-}
+}*/
 
 void muestraRio(){
 	/*
@@ -403,7 +419,7 @@ void creaEscena()
 	muestraPelota();
 	muestraCandelabros();
 	//cuadros para info
-	checaPosicionCuadro();
+	//checaPosicionCuadro();
 
 }
 

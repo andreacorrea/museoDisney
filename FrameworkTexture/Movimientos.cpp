@@ -14,7 +14,7 @@ bool checarSubirBajar(){
 	Objeto *prot=escena->objetos["protagonista"];
 	if(pisoAvatar == 1 && prot->posX > MIN_ELEVATOR && prot->posX < MAX_ELEVATOR && prot->posZ > MIN_ELEVATOR && prot->posZ < MAX_ELEVATOR ){
 		prot->rotY=45;
-		prot->posY = 6;
+		prot->posY = 6.25;
 		prot->posX = -5.5;
 		camaraPrimeraPersona->xview=prot->posX+sin(degToRad(prot->rotY-180));
 		camaraPrimeraPersona->zview=prot->posZ+cos(degToRad(prot->rotY-180));

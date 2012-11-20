@@ -106,12 +106,13 @@ void processHits (GLint hits){
 
 void acciones(Objeto *o){
   //Acciones con el objeto seleccionado
-	if (o->velZ!=0.0) {
+	/*if (o->velZ!=0.0) {
 		o->velZ=0.0;
    }
    else{
 		o->velZ=0.1;  
-   }
+   }*/
+	o->escalaUniforme(2);
 }
 
 
