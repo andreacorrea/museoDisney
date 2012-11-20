@@ -207,7 +207,7 @@ void muestraGlobo()
 	escena->objetos["globo"]->posY=7.5;
 	escena->objetos["globo"]->posZ=-5.2;
 	escena->objetos["globo"]->velRotY=0.6;
-	escena->modificaMaterial("manzana", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
+	//escena->modificaMaterial("globo", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
 
 }
 
@@ -438,9 +438,9 @@ void creaEscena()
 	/*baseLampara();
 	muestraLampara();*/
 	//globo
-	/*baseGlobo();
+	//baseGlobo();
 	muestraGlobo();
-	muestraCuadroSubirBajar();*/
+	//muestraCuadroSubirBajar();
 	muestraCuadros();
 	//muestraRio();
 	muestraPelota();
