@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib castillotexturas.mtl
+mtllib castillo.mtl
 g default
 v -714.906477 -8.365846 737.845591
 v -567.337368 -8.365846 737.845591
