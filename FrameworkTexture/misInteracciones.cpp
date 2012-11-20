@@ -31,12 +31,12 @@ void miMouseClick(int button, int state, int x, int y)
   //Definir comportamientos particulares para mouse click
  
   //Para desactivar comportamiento por default, hacer mouseDefault=false  
-	if(button== GLUT_LEFT_BUTTON && state==GLUT_DOWN){
+	/*if(button== GLUT_LEFT_BUTTON && state==GLUT_DOWN){
 		mouseDefault=false;
 		startPicking(x,y);
 		escena->dibujaEscena();
 		stopPicking();
-	}
+	}*/
 }
 
 void miMouseDrag(int x, int y,GLfloat deltaX,GLfloat deltaY)
