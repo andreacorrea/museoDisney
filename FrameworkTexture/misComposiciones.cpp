@@ -127,23 +127,7 @@ void demuestraMateriales()
 	
 }
 
-//Autor: Alonso Rodriguez
-//cuboIrregular(nombre del objeto, tamanio en X, tamanio en Y, tamanio en Z, pos en X, pos en Y, pos en Z)
-void plano(char *nombre, GLfloat sizeX,GLfloat sizeY,GLfloat sizeZ, GLfloat pX, GLfloat pY, GLfloat pZ){
-		escena->agregaObjeto(nombre, (Objeto *) new Cubo(1,0.326,1.0,0.019)); //70,159,5
-		escena->objetos [nombre]->posX=pX;
-		escena->objetos [nombre]->posZ=pZ;
-		escena->objetos [nombre]->posY=pY;
-		escena->objetos [nombre]->escalaX=sizeX;
-		escena->objetos [nombre]->escalaZ=sizeZ;
-		escena->objetos [nombre]->escalaY=sizeY;
-		escena->objetos["plano"]->defineMaterial(1.0,1.0,1.0,
-										 1.0,1.0,1.0,
-										 0.0,0.0,0.0,
-										 0.0,0.0,0.0,
-										 "pasto.tga",GL_REPEAT,1,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
 
-}
 
 void demuestraPared()
 {
@@ -420,10 +404,32 @@ void muestraArboles(){
 	}
 }
 
+//Autor: Alonso Rodriguez
+//cuboIrregular(nombre del objeto, tamanio en X, tamanio en Y, tamanio en Z, pos en X, pos en Y, pos en Z)
+//void plano(char *nombre, GLfloat sizeX,GLfloat sizeY,GLfloat sizeZ, GLfloat pX, GLfloat pY, GLfloat pZ){
+void plano(){
+		/*escena->agregaObjeto(nombre, (Objeto *) new Cubo(1,0.326,1.0,0.019)); //70,159,5
+		escena->objetos [nombre]->posX=pX;
+		escena->objetos [nombre]->posZ=pZ;
+		escena->objetos [nombre]->posY=pY;
+		escena->objetos [nombre]->escalaX=sizeX;
+		escena->objetos [nombre]->escalaZ=sizeZ;
+		escena->objetos [nombre]->escalaY=sizeY;
+		escena->objetos["plano"]->defineMaterial(1.0,1.0,1.0,
+										 1.0,1.0,1.0,
+										 0.0,0.0,0.0,
+										 0.0,0.0,0.0,
+										 "pasto.tga",GL_REPEAT,1,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);*/
+	//muestraQuad("pasto", "pasto.tga", 60, 60, -.2, -.5, -5, 0, 90, 0.0, 0.0, 0.25);
+	muestraQuad("pasto", "pasto.tga", 200, 200, 0, -0.58, -6.8, 0, 90, 0.00, 0.00, 0.25);
+
+}
+
 void creaEscena()
 {
 
 	//plano("plano", 200,1,200,0,-1.06,0);
+	plano();
 	muestraAlfombra();
 	muestraSkydome();
 
