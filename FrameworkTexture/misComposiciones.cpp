@@ -309,26 +309,44 @@ void muestraCuadros(){
 	GLfloat paredFondoZ = -11.0;
 	GLfloat paredPuertaZ = -0.7;
 	Objeto *prot=escena->objetos["protagonista"];
+	
 	//Cuadros primer piso
 	muestraQuad("CuadroBlancanieves", "cuadros/CuadroBlancanieves.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
-	muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", ancho, alto, paredIzqX-0.5, primerPisoPosY, -4, 90, 0);
-	
-	muestraQuad("cuadro", "subir.tga", 1, 1, -6.5, 0.25, -4, 0, 90);
 
+	muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", ancho, alto, -8.3, primerPisoPosY, -4, 90, 0);
+	
 	muestraQuad("CuadroAprendizBrujo", "cuadros/CuadroAprendizBrujo.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("infoAprendizBrujo", "cuadros/CuadroAprendizBrujo_informacion.tga", ancho, alto, -2, primerPisoPosY, -11.2, 0, 0);
+	
 	muestraQuad("CuadroBellaYBestia", "cuadros/CuadroCuadroBellaYBestia.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("infoBellaYBestia", "cuadros/CuadroBellaYBestia_informacion.tga", ancho, alto, 3, primerPisoPosY, -11.2, 0, 0);
+	
 	muestraQuad("CuadroPinocho", "cuadros/CuadroPinocho.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
+	muestraQuad("infoPinocho", "cuadros/CuadroPinocho_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -7.5, 90, 0);
+	
 	muestraQuad("CuadroAladdin", "cuadros/CuadroAladdin.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
+	muestraQuad("infoAladdin", "cuadros/CuadroAladdin_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -2.5, 90, 0);
 	
 
 	//Cuadros segundo piso
 	
 	muestraQuad("CuadroToyStory", "cuadros/CuadroToyStory.tga", ancho, alto, -2, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("infoToyStory", "cuadros/CuadroToyStory_informacion.tga", ancho, alto, -2, segundopisoPosY, -11.2, 0, 0);
+
 	muestraQuad("CuadroIncreibles", "cuadros/CuadroIncreibles.tga", ancho, alto, 3, segundopisoPosY, paredFondoZ, 0, 0);
+	muestraQuad("infoIncreibles", "cuadros/CuadroIncreibles_informacion.tga", ancho, alto, 3, segundopisoPosY, -11.2, 0, 0);
+
 	muestraQuad("CuadroNemo", "cuadros/CuadroNemo.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
+	muestraQuad("infoNemo", "cuadros/CuadroNemo_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -2.5, 90, 0);
+
 	muestraQuad("CuadroUp", "cuadros/CuadroUp.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
-	muestraQuad("CuadroWallE", "cuadros/CuadroWallE.tga", ancho, alto, -4, segundopisoPosY, -0.9, 0, 0);
+	muestraQuad("infoUp", "cuadros/CuadroUp_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -7.5, 90, 0);
+
+	muestraQuad("CuadroWallE", "cuadros/CuadroWallE.tga", ancho, alto, -4, segundopisoPosY, -0.8, 0, 0);
+	muestraQuad("infoWallE", "cuadros/CuadroWallE_informacion.tga", ancho, alto, -4, segundopisoPosY, -0.7, 0, 0);
+
 	muestraQuad("CuadroMonstersInc", "cuadros/CuadroMonstersInc.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
+	muestraQuad("infoMonstersInc", "cuadros/CuadroMonstersInc_informacion.tga", ancho, alto, 3, segundopisoPosY, -0.6, 0, 0);
 	
 }
 
@@ -404,28 +422,29 @@ void muestraArboles(){
 
 void creaEscena()
 {
+
 	//plano("plano", 200,1,200,0,-1.06,0);
 	muestraAlfombra();
 	muestraSkydome();
+
 	muestraCastillo();
 	muestraSombrero();
 	//muestraArboles();
 	muestraProtagonista();
 	//manzana
-	baseManzana();
-	muestraManzana();
+	/*baseManzana();
+	muestraManzana();*/
 	//lampara
-	baseLampara();
-	muestraLampara();
+	/*baseLampara();
+	muestraLampara();*/
 	//globo
-	baseGlobo();
+	/*baseGlobo();
 	muestraGlobo();
-	muestraCuadroSubirBajar();
+	muestraCuadroSubirBajar();*/
 	muestraCuadros();
 	muestraRio();
 	muestraPelota();
 	muestraCandelabros();
-	
 
 }
 
