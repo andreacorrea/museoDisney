@@ -9,6 +9,19 @@ double degToRad(double deg){
 	return deg*M_PI/180;
 }
 
+void interaccionCuadros(){
+	Objeto *prot=escena->objetos["protagonista"];
+	if(prot->posX < -6  && prot->posX > -8.25 && prot->posZ > -4.5 && prot->posZ < -3.5 ){
+		escena->objetos["infoBlancaNieves"]->posX=-8.2;
+		/*escena->objetos["infoBlancaNieves"]->escalaY=4.0;
+		escena->objetos["infoBlancaNieves"]->escalaX=2.5;*/
+		//muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 1.5, 1.5, -8, primerPisoPosY, -4, 90, 0);
+	}
+	else{
+		escena->objetos["infoBlancaNieves"]->posX=-8.3;
+	}
+}
+
 //verific la posicion del avatar en X y Z para determinar si sube o baja las escaleras
 bool checarSubirBajar(){
 	Objeto *prot=escena->objetos["protagonista"];
@@ -149,7 +162,7 @@ bool collision(GLfloat rotY){
 //hacia la camara es positivo
 //hacia la camara es positivo
 void moverAdelante(){
-
+	interaccionCuadros();
 	Objeto *aux=escena->objetos["protagonista"];
 	if(!checarSubirBajar()){
 		if(!collision(aux->rotY-180)){

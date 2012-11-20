@@ -27,6 +27,10 @@ void muestraCastillo()
 	escena->objetos["castillo"]->rotY=-90;
 	escena->objetos["castillo"]->posY=17.5;
 	escena->modificaMaterial("castillo", "lambert24SG", "teja.tga", GL_REPEAT, 1, 0.25, 0,0);
+	escena->modificaMaterial("castillo", "lambert26SG", "pasto.tga", GL_REPEAT, 1, 0.25, 0,0);
+	/*escena->modificaMaterial("castillo", "lambert28SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);
+	escena->modificaMaterial("castillo", "lambert25SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);
+	escena->modificaMaterial("castillo", "lambert20SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);*/
 }
 
 
@@ -62,13 +66,13 @@ void muestraSombrero()
 
 void muestraPelota()
 {
-  /*escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota"));
+  escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota2"));
   escena->objetos["pelota"]->escalaUniforme(1.5);
   escena->objetos["pelota"]->posY=7.85;
   escena->objetos["pelota"]->posZ=-5.0;
   escena->objetos["pelota"]->velRotY=0.6;
-  escena->modificaMaterial("pelota", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);*/
-	escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
+  escena->modificaMaterial("pelota", "blinn1SG", ".tga", GL_EYE_LINEAR, 1);
+	/*escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
 	escena->objetos["pelota"]->velRotY=1.0;
 	escena->objetos["pelota"]->posY=7.85;
 	escena->objetos["pelota"]->posZ=-5.0;
@@ -76,7 +80,7 @@ void muestraPelota()
 										 1.0,1.0,1.0,
 										 0.0,0.0,0.0,
 										 0.0,0.0,0.0,
-										 "sombrero.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,true);
+										 "sombrero.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,true);*/
 }
 
 void demuestraMateriales()
@@ -133,6 +137,12 @@ void plano(char *nombre, GLfloat sizeX,GLfloat sizeY,GLfloat sizeZ, GLfloat pX, 
 		escena->objetos [nombre]->escalaX=sizeX;
 		escena->objetos [nombre]->escalaZ=sizeZ;
 		escena->objetos [nombre]->escalaY=sizeY;
+		escena->objetos["plano"]->defineMaterial(1.0,1.0,1.0,
+										 1.0,1.0,1.0,
+										 0.0,0.0,0.0,
+										 0.0,0.0,0.0,
+										 "pasto.tga",GL_REPEAT,1,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,false);
+
 }
 
 void demuestraPared()
@@ -165,13 +175,13 @@ void baseManzana(){
 
 void muestraManzana()
 {
-  escena->agregaObjeto("manzana", (Objeto *) new Modelo("manzana"));
+  escena->agregaObjeto("manzana", (Objeto *) new Modelo("manzana2"));
   escena->objetos["manzana"]->escalaUniforme(0.5);
   escena->objetos["manzana"]->posX=-7.7;
   escena->objetos["manzana"]->posY=1.38;
   escena->objetos["manzana"]->posZ=-2.3;
   escena->objetos["manzana"]->velRotY=0.6;
-  escena->modificaMaterial("manzana", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);
+  //escena->modificaMaterial("manzana", "blinn1SG", "sombrero.tga", GL_EYE_LINEAR, 0.5);
 
 }
 
@@ -301,12 +311,9 @@ void muestraCuadros(){
 	Objeto *prot=escena->objetos["protagonista"];
 	//Cuadros primer piso
 	muestraQuad("CuadroBlancanieves", "cuadros/CuadroBlancanieves.tga", ancho, alto, paredIzqX, primerPisoPosY, -4, 90, 0);
-	muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 0.5, 0.5, -8, primerPisoPosY, -4, 90, 0);
-	if(prot->posX < -6  && prot->posX > -8.25 && prot->posZ > -4.5 && prot->posZ < -3.5 ){
-		escena->objetos["infoBlancaNieves"]->escalaY=4.0;
-		escena->objetos["infoBlancaNieves"]->escalaX=2.5;
-		//muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", 1.5, 1.5, -8, primerPisoPosY, -4, 90, 0);
-	}muestraQuad("cuadro", "subir.tga", 1, 1, -6.5, 0.25, -4, 0, 90);
+	muestraQuad("infoBlancaNieves", "cuadros/CuadroBlancanieves_informacion.tga", ancho, alto, paredIzqX-0.5, primerPisoPosY, -4, 90, 0);
+	
+	muestraQuad("cuadro", "subir.tga", 1, 1, -6.5, 0.25, -4, 0, 90);
 
 	muestraQuad("CuadroAprendizBrujo", "cuadros/CuadroAprendizBrujo.tga", ancho, alto, -2, primerPisoPosY, paredFondoZ, 0, 0);
 	muestraQuad("CuadroBellaYBestia", "cuadros/CuadroCuadroBellaYBestia.tga", ancho, alto, 3, primerPisoPosY, paredFondoZ, 0, 0);
@@ -397,7 +404,7 @@ void muestraArboles(){
 
 void creaEscena()
 {
-	plano("plano", 200,1,200,0,-1.06,0);
+	//plano("plano", 200,1,200,0,-1.06,0);
 	muestraAlfombra();
 	muestraSkydome();
 	muestraCastillo();
@@ -418,8 +425,7 @@ void creaEscena()
 	muestraRio();
 	muestraPelota();
 	muestraCandelabros();
-	//cuadros para info
-	//checaPosicionCuadro();
+	
 
 }
 
