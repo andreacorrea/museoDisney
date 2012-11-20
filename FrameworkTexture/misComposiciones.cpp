@@ -309,10 +309,10 @@ void muestraCuadros(){
 	muestraQuad("infoBellaYBestia", "cuadros/CuadroBellaYBestia_informacion.tga", ancho, alto, 3, primerPisoPosY, -11.2, 0, 0);
 	
 	muestraQuad("CuadroPinocho", "cuadros/CuadroPinocho.tga", ancho, alto, paredDerX, primerPisoPosY, -7.5, 90, 0);
-	muestraQuad("infoPinocho", "cuadros/CuadroPinocho_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -7.5, 90, 0);
+	muestraQuad("infoPinocho", "cuadros/CuadroPinocho_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -7.5, 270, 0);
 	
 	muestraQuad("CuadroAladdin", "cuadros/CuadroAladdin.tga", ancho, alto, paredDerX, primerPisoPosY, -2.5, 90, 0);
-	muestraQuad("infoAladdin", "cuadros/CuadroAladdin_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -2.5, 90, 0);
+	muestraQuad("infoAladdin", "cuadros/CuadroAladdin_informacion.tga", ancho, alto, 7.8, primerPisoPosY, -2.5, 270, 0);
 	
 
 	//Cuadros segundo piso
@@ -324,16 +324,16 @@ void muestraCuadros(){
 	muestraQuad("infoIncreibles", "cuadros/CuadroIncreibles_informacion.tga", ancho, alto, 3, segundopisoPosY, -11.2, 0, 0);
 
 	muestraQuad("CuadroNemo", "cuadros/CuadroNemo.tga", ancho, alto, paredDerX, segundopisoPosY, -2.5, 90, 0);
-	muestraQuad("infoNemo", "cuadros/CuadroNemo_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -2.5, 90, 0);
+	muestraQuad("infoNemo", "cuadros/CuadroNemo_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -2.5, 270, 0);
 
 	muestraQuad("CuadroUp", "cuadros/CuadroUp.tga", ancho, alto, paredDerX, segundopisoPosY, -7.5, 90, 0);
-	muestraQuad("infoUp", "cuadros/CuadroUp_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -7.5, 90, 0);
+	muestraQuad("infoUp", "cuadros/CuadroUp_informacion.tga", ancho, alto, 7.8, segundopisoPosY, -7.5, 270, 0);
 
 	muestraQuad("CuadroWallE", "cuadros/CuadroWallE.tga", ancho, alto, -4, segundopisoPosY, -0.8, 0, 0);
 	muestraQuad("infoWallE", "cuadros/CuadroWallE_informacion.tga", ancho, alto, -4, segundopisoPosY, -0.7, 0, 0);
 
-	muestraQuad("CuadroMonstersInc", "cuadros/CuadroMonstersInc.tga", ancho, alto, 3, segundopisoPosY, paredPuertaZ, 0, 0);
-	muestraQuad("infoMonstersInc", "cuadros/CuadroMonstersInc_informacion.tga", ancho, alto, 3, segundopisoPosY, -0.6, 0, 0);
+	muestraQuad("CuadroMonstersInc", "cuadros/CuadroMonstersInc.tga", ancho, alto, 3, segundopisoPosY, -0.8, 0, 0);
+	muestraQuad("infoMonstersInc", "cuadros/CuadroMonstersInc_informacion.tga", ancho, alto, 3, segundopisoPosY, -0.7, 0, 0);
 	
 }
 
