@@ -22,15 +22,12 @@ void defineLuces()
 void muestraCastillo()
 {
   //escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo1"));
-	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillotexturas"));
+	escena->agregaObjeto("castillo", (Objeto *) new Modelo("castillo"));
 	escena->objetos["castillo"]->escalaUniforme(20.0);
 	escena->objetos["castillo"]->rotY=-90;
 	escena->objetos["castillo"]->posY=17.5;
 	escena->modificaMaterial("castillo", "lambert24SG", "teja.tga", GL_REPEAT, 1, 0.25, 0,0);
 	escena->modificaMaterial("castillo", "lambert26SG", "pasto.tga", GL_REPEAT, 1, 0.25, 0,0);
-	/*escena->modificaMaterial("castillo", "lambert28SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);
-	escena->modificaMaterial("castillo", "lambert25SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);
-	escena->modificaMaterial("castillo", "lambert20SG", "stone.tga", GL_REPEAT, 1, 0.02, 0,0);*/
 }
 
 
@@ -66,21 +63,22 @@ void muestraSombrero()
 
 void muestraPelota()
 {
-  escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota2"));
+  /*escena->agregaObjeto("pelota", (Objeto *) new Modelo("pelota2"));
   escena->objetos["pelota"]->escalaUniforme(1.5);
   escena->objetos["pelota"]->posY=7.85;
   escena->objetos["pelota"]->posZ=-5.0;
   escena->objetos["pelota"]->velRotY=0.6;
-  escena->modificaMaterial("pelota", "blinn1SG", ".tga", GL_EYE_LINEAR, 1);
-	/*escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
-	escena->objetos["pelota"]->velRotY=1.0;
+  escena->modificaMaterial("pelota", "blinn1SG", "textura_pelota3.tga", GL_EYE_LINEAR, 1);*/
+	escena->agregaObjeto("pelota",(Objeto *) new Esfera(1.5,40,40,1.0,1.0,1.0));
+	escena->objetos["pelota"]->velRotY=2.0;
+	
 	escena->objetos["pelota"]->posY=7.85;
 	escena->objetos["pelota"]->posZ=-5.0;
 	escena->objetos["pelota"]->defineMaterial(1.0,1.0,1.0,
 										 1.0,1.0,1.0,
 										 0.0,0.0,0.0,
 										 0.0,0.0,0.0,
-										 "sombrero.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_SPHERE_MAP,true);*/
+										 "textura_pelota3.tga", GL_CLAMP,1.0,0.0,0.0,0.0,0.0,1.0,GL_OBJECT_LINEAR,true);
 }
 
 void demuestraMateriales()
@@ -382,7 +380,7 @@ void muestraRio(){
 	muestraQuad("rio3", "agua.tga", 32, 8, 0, -0.5, -16.25, 0, 90, 0.005, 0.005, 0.25);
 	muestraQuad("rio4", "agua.tga", 6.475, 14.5, 12.75, -0.5, -5.3, 0, 90, 0.005, 0.005, 0.25);*/
 	//o
-	muestraQuad("rio1", "agua.tga", 40, 40, 0, -0.55, -6.8, 0, 90, 0.005, 0.005, 0.25);
+	muestraQuad("rio1", "agua.tga", 30, 40, 0, -0.55, -6.8, 0, 90, 0.005, 0.005, 0.25);
 }
 
 void muestraAlfombra(){
@@ -442,9 +440,9 @@ void creaEscena()
 	muestraGlobo();
 	muestraCuadroSubirBajar();*/
 	muestraCuadros();
-	muestraRio();
+	//muestraRio();
 	muestraPelota();
-	muestraCandelabros();
+	//muestraCandelabros();
 
 }
 
