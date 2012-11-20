@@ -154,7 +154,7 @@ void baseManzana(){
 
 void muestraManzana()
 {
-  escena->agregaObjeto("manzana", (Objeto *) new Modelo("manzana2"));
+  escena->agregaObjeto("manzana", (Objeto *) new Modelo("manzana"));
   escena->objetos["manzana"]->escalaUniforme(0.5);
   escena->objetos["manzana"]->posX=-7.7;
   escena->objetos["manzana"]->posY=1.38;
@@ -207,7 +207,7 @@ void muestraGlobo()
 	escena->objetos["globo"]->posY=7.5;
 	escena->objetos["globo"]->posZ=-5.2;
 	escena->objetos["globo"]->velRotY=0.6;
-	//escena->modificaMaterial("globo", "blinn1SG", "moho.tga", GL_EYE_LINEAR, 0.5);
+	
 
 }
 
@@ -432,8 +432,8 @@ void creaEscena()
 	//muestraArboles();
 	muestraProtagonista();
 	//manzana
-	/*baseManzana();
-	muestraManzana();*/
+	//baseManzana();
+	muestraManzana();
 	//lampara
 	/*baseLampara();
 	muestraLampara();*/
