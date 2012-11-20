@@ -196,6 +196,29 @@ void muestraLampara()
 
 }
 
+void muestraBanderas()
+{
+	escena->agregaObjeto("bandera", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera"]->escalaUniforme(1);
+	escena->objetos["bandera"]->posX=0.35;
+	escena->objetos["bandera"]->posY=36;
+	escena->objetos["bandera"]->posZ=-5.0;
+
+	escena->agregaObjeto("bandera2", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera2"]->escalaUniforme(1);
+	escena->objetos["bandera2"]->posX=-3.65;
+	escena->objetos["bandera2"]->posY=23.9;
+	escena->objetos["bandera2"]->posZ=-1;
+
+	escena->agregaObjeto("bandera3", (Objeto *) new Poses("bandera%d",2,3));
+	escena->objetos["bandera3"]->escalaUniforme(1);
+	escena->objetos["bandera3"]->posX=6.7;
+	escena->objetos["bandera3"]->posY=23.9;
+	escena->objetos["bandera3"]->posZ=-1;
+
+
+}
+
 //metodos para la globo
 void baseGlobo(){
 	escena->agregaObjeto("baseGlobo", (Objeto *) new Cubo(0.4, 0.0, 0.0, 1.0));
@@ -221,7 +244,7 @@ void muestraGlobo()
 
 void muestraCandelabros()
 {
-	escena->agregaObjeto("candelabro", (Objeto *) new Modelo("candelabro"));
+	escena->agregaObjeto("candelabro", (Objeto *) new Poses("candelabro%d",2,3));
 	escena->objetos["candelabro"]->escalaUniforme(1.8);
 	escena->objetos["candelabro"]->posX=-3;
 	escena->objetos["candelabro"]->posY=4;
